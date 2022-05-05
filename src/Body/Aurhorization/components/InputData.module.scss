@@ -1,0 +1,43 @@
+@import "../../../scss/colors.scss";
+
+
+.InputData {
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 150px auto;
+
+    height: 80px;
+
+    
+
+    font-family: $font_family;
+    font-size: $font_size_h1;
+
+    // background-color: black;
+    align-items: center;
+    grid-area: B;
+}
+
+
+.InputData input{
+    height: 40px;
+    width: calc(100% - 20px);
+    
+    border: $border_width;
+    border-style: solid;
+    border-color: $c600;
+    box-shadow: none;
+    // margin: 10px;
+    margin-right: 30px;
+    background: #9BD8CD;
+    border-radius: 10px;
+    
+    background-color: $c100;
+
+
+
+    font-family: $font_family;
+    font-size: $font_size_h1/1.5;
+    padding-left: 10px;
+
+}

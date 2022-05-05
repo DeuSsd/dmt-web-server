@@ -1,11 +1,15 @@
 import React from 'react';
-import Header from './Header/Header';
+// import Authorization from './Body/Aurhorization/Authorization';
+// import Header from './Header/Header';
+
+import style from "./App.module.scss";
+import Body from './Body/Body';
 
 function App() {
   return (
-    <div className="App">
-      <Header />
-      
+    <div className={style.app}>
+      {/* <Header /> */}
+      <Body />
     </div>
   );
 }

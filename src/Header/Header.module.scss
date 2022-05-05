@@ -13,6 +13,7 @@
     background-color: $c50;
 
 
+    align-items: center;
     border-radius: 25px;
     border-width: $border_width;
     border-color:  $c600 ;
@@ -24,14 +25,18 @@
 .textLogo {
     display: flex;
     color: $c900;
-    font: 2em $font;
+    font-family: $font_family;
+    font-size: $font_size_h1;
+
     
     
-    vertical-align: middle;
-    // align-content: center;
 }
 
 .userBox {
     color: $c900;
-    font: 2em $font;
+    
+    font-family: $font_family;
+    font-size: $font_size_h1;
+
+    
 }
