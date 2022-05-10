@@ -4,14 +4,13 @@ import React from 'react';
 // import "bootstrap/dist/css/bootstrap.min.css";
 import style from "./App.module.scss";
 
-// import AuthService from "./services/auth.service";
-// import UserService from './services/user.service';
 
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
 import Authorization from './AuthorizationPage/AuthorizationPage';
 import MainPage from './MainPage/MainPage';
+// import AuthService from '../../services/auth.service';
 
 
 //  // {/* <Header /> */}
@@ -19,14 +18,20 @@ import MainPage from './MainPage/MainPage';
 //     {console.log(AuthService.register("user","user@example.com","@Qwerty1234"))}
 //     {console.log(UserService.getPublicContent())}
 
+let initialState = {
+  'token': '',
+  'stateAuth': false,
+}
+
 
 function App() {
   return (
     <BrowserRouter>
       <div className={style.app}>
       <Routes>
-        <Route path='/' element={<MainPage/>}/> 
-        <Route path='/auth' element={<Authorization/>}/>
+        <Route exect path='/main' element={<MainPage initialState={initialState} />}/> 
+        <Route path='/' element={<Authorization initialState={initialState} />}/>
+        {/* {console.log(AuthService.login("user","@Qwerty1234"))} */}
       </Routes>
       </div>
     </BrowserRouter>

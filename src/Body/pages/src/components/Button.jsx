@@ -6,7 +6,7 @@ import style from "./Button.module.scss";
 const Button = (props) => {
     return (
         <div className={style.Button}>
-            <button>
+            <button onClick={() => {props["onClick"](props.initialState)}}>
                 {props.text}
             </button>
         </div>

@@ -21,8 +21,8 @@ const register = (username, email, password) => {
 
 const login = (username, password) => {
   return axios
-    .post(API_URL + "/login",
-     {username,
+    .post(API_URL + "/login", {
+      username,
       password,
     })
     .then((response) => {
@@ -47,6 +47,8 @@ const AuthService = {
   logout,
   getCurrentUser,
 };
+
+
 export default AuthService;
 
 

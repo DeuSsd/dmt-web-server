@@ -16,3 +16,13 @@
 
     background-color: $c200;
 }
+
+
+
+.Button button:hover{
+    background-color: $c300;
+}
+
+.Button button:active{
+    background-color: $c600;
+}
