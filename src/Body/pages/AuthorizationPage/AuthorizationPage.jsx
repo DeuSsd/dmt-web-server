@@ -1,11 +1,11 @@
 import React from "react";
-import style from "./Authorization.module.scss";
-import Button from "./components/Button";
-import InputData from "./components/InputData";
+import style from "./AuthorizationPage.module.scss";
+import Button from "../src/components/Button";
+import InputData from "../src/components/InputData";
 
 
 
-const Authorization = (props) => {
+const AuthorizationPage = (props) => {
     return(
         <div className={style.Authorization}>
             
@@ -21,8 +21,6 @@ const Authorization = (props) => {
             <div>
                 <InputData input_type = "password" text="Password:" placeholder="Password" />
             </div>
-            
-          
             <div className={`${style.Button__place}`}>
                 <Button text="Sign In" />
                 <Button text="Sign Up" />
@@ -32,4 +30,4 @@ const Authorization = (props) => {
 }
 
 
-export default Authorization;
+export default AuthorizationPage;
