@@ -5,6 +5,7 @@ import InputData from "../src/components/InputData";
 
 
 import AuthService from "../../../services/auth.service";
+import UserService from "../../../services/user.service";
 
 
 
@@ -29,6 +30,8 @@ function login (initialState) {
 
 
 const AuthorizationPage = (props) => {
+
+    debugger
     return(
         <div className={style.Authorization}>
             <div >
@@ -44,7 +47,7 @@ const AuthorizationPage = (props) => {
             </div>
             <div className={`${style.Button__place}`}>
                 <Button initialState={props.initialState} onClick={login} text="Sign In" />
-                <Button initialState={props.initialState} onClick={() => {console.log(props.initialState)}} text="Sign Up" />     
+                <Button initialState={props.initialState} onClick={() => {UserService.getPublicContent(props.initialState)}} text="Sign Up" />     
             </div>
         </div>
     )

@@ -4,7 +4,6 @@ import React from 'react';
 // import "bootstrap/dist/css/bootstrap.min.css";
 import style from "./App.module.scss";
 
-
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
@@ -18,19 +17,16 @@ import MainPage from './MainPage/MainPage';
 //     {console.log(AuthService.register("user","user@example.com","@Qwerty1234"))}
 //     {console.log(UserService.getPublicContent())}
 
-let initialState = {
-  'token': '',
-  'stateAuth': false,
-}
 
 
-function App() {
+function App(props) {
+  debugger
   return (
     <BrowserRouter>
       <div className={style.app}>
       <Routes>
-        <Route exect path='/main' element={<MainPage initialState={initialState} />}/> 
-        <Route path='/' element={<Authorization initialState={initialState} />}/>
+        <Route exect path='/main' element={<MainPage initialState={props.state.authState} />}/> 
+        <Route path='/' element={<Authorization initialState={props.state.authState} />}/>
         {/* {console.log(AuthService.login("user","@Qwerty1234"))} */}
       </Routes>
       </div>
