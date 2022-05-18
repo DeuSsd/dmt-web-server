@@ -6,11 +6,15 @@ const APiCell = (props) => {
     let title = props.APi.title
     // debugger
     return (
-        <div className={style.APiCell}>
+
+        <div
+            className={style.APiCell}
+            {...props}
+            ref={props.innerRef}
+
+        >
             {props.APi.api}
-            {/* asdasd */}
         </div>
-     
     )
 }
 
