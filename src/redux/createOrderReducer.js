@@ -1,47 +1,72 @@
+const DRAG_END_SELECTOR_API = 'DRAG_END_SELECTOR_API'
 
 let initialState = {
     APIs: {
-        weatherAPI: {
+        '1': {
             id: '1',
             title: 'Погода',
             api: 'weatherAPI',
             parameters: []
         },
-        COVID_API: {
+        '2': {
             id: '2',
             title: 'Погода',
             api: 'COVID_API',
             parameters: []
         },
-        COVID_API_2: {
+        '3': {
             id: '3',
             title: 'Погода',
             api: 'COVID_API_2',
             parameters: []
         },
-        COVID_API_3: {
+        '4': {
             id: '4',
             title: 'Погода',
             api: 'COVID_API_3',
             parameters: []
         },
+        // weatherAPI: {
+        //     id: '1',
+        //     title: 'Погода',
+        //     api: 'weatherAPI',
+        //     parameters: []
+        // },
+        // COVID_API: {
+        //     id: '2',
+        //     title: 'Погода',
+        //     api: 'COVID_API',
+        //     parameters: []
+        // },
+        // COVID_API_2: {
+        //     id: '3',
+        //     title: 'Погода',
+        //     api: 'COVID_API_2',
+        //     parameters: []
+        // },
+        // COVID_API_3: {
+        //     id: '4',
+        //     title: 'Погода',
+        //     api: 'COVID_API_3',
+        //     parameters: []
+        // },
     },
 
     APIsColumns: {
         SelectedAPIs: {
-            id: '1',
+            id: 'SelectedAPIs',
             title: 'SelectedAPIs',
-            APIsId: ['COVID_API_3'],
+            APIsId: ['4'],
         },
         UnselectedAPIs: {
-            id: '2',
+            id: 'UnselectedAPIs',
             title: 'UnselectedAPIs',
-            APIsId: ['weatherAPI', 'COVID_API', 'COVID_API_2'],
+            APIsId: ['1', '2', '3'],
         }
     },
 
 
-    APIsColumnsOrder: ['SelectedAPIs','UnselectedAPIs']
+    APIsColumnsOrder: ['SelectedAPIs', 'UnselectedAPIs']
 }
 // tasks: {
 //         'task': { id: 'task', content: 'Some content' },
@@ -62,7 +87,85 @@ let initialState = {
 
 let createOrderReducer = (state = initialState, action) => {
     let copyState;
+    // let ss = {
+    //     "draggableId": "1",
+
+    //     "source": {
+    //         "index": 0,
+    //         "droppableId": "2"
+    //     },
+
+    //     "destination": {
+    //         "droppableId": "1",
+    //         "index": 0
+    //     },
+    // }
+
+    // {
+    //     "draggableId": "4",
+
+    //     "source": {
+    //         "index": 0,
+    //         "droppableId": "SelectedAPIs"
+    //     },
+
+    //     "destination": {
+    //         "droppableId": "UnselectedAPIs",
+    //         "index": 1
+    //     },
+    // }
+
+
     switch (action.type) {
+
+        case DRAG_END_SELECTOR_API:
+            const { destination, source, draggableId } = action.result;
+
+            let dropAPiByID = (DragableId, APIsId) => {
+                // debugger
+                let indexOfDragableId = APIsIdSource.indexOf(DragableId);
+                if (indexOfDragableId !== -1) {
+                    APIsId.splice(indexOfDragableId, 1);
+                    // debugger
+                }
+                return APIsId;
+            }
+
+            // debugger
+            if (!destination) {
+                return state;
+            }
+
+            let APIsIdSource = [...state.APIsColumns[source.droppableId].APIsId]
+            APIsIdSource = dropAPiByID(draggableId,APIsIdSource)
+            let APIsIdDestination = [...state.APIsColumns[destination.droppableId].APIsId, draggableId]
+
+            // debugger
+
+    
+            if (
+                destination.droppableId === source.droppableId 
+                // destination.index === source.index
+            ) {
+                return state;
+            }
+
+     
+       
+            copyState = {
+                ...state
+            }
+
+            copyState.APIsColumns[source.droppableId].APIsId = [...APIsIdSource]
+            copyState.APIsColumns[destination.droppableId].APIsId = [...APIsIdDestination]
+            console.log(state.APIsColumns.UnselectedAPIs.APIsId)
+            console.log(state.APIsColumns.SelectedAPIs.APIsId)
+            console.log(copyState.APIsColumns.UnselectedAPIs.APIsId)
+            console.log(copyState.APIsColumns.SelectedAPIs.APIsId)
+
+            // debugger
+            return copyState
+
         // case LOG_IN: {
         //     copyState = { ...state }
         //     let login = state.login
@@ -95,6 +198,8 @@ let createOrderReducer = (state = initialState, action) => {
     }
 }
 
+
+export const onDragEndCreator = (result) => ({ type: DRAG_END_SELECTOR_API, result: result })
 // export const updatePasswordTextAreaCreator = (body) => ({ type: INPUT_PASSWORD_TEXT_UPDATE, body: body })
 
 

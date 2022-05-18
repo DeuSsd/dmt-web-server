@@ -27,11 +27,14 @@ const APIsGrid = (props) => {
         )
     })
 
+ 
+
+
     // debugger
     return (
 
         <DragDropContext
-
+        onDragEnd={props.onDragEnd}
         >
             <div
              className={style.APIsGrid}>

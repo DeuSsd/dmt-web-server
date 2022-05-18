@@ -1,6 +1,5 @@
 import React from "react";
 import { Draggable } from "react-beautiful-dnd";
-import { Droppable } from "react-beautiful-dnd";
 import APiCell from "./APiCell/APiCell";
 import style from "./APIsContainer.module.scss"
 
