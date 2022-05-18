@@ -5,7 +5,6 @@ import InputData from "../src/components/InputData";
 
 
 const AuthorizationPage = (props) => {
-
     return (
         <div className={style.Authorization}>
             <div >
@@ -32,8 +31,14 @@ const AuthorizationPage = (props) => {
                 />
             </div>
             <div className={`${style.Button__place}`}>
-                <Button actionOnClick={props.onLogInClick} text="Sign In" />
-                <Button actionOnClick={props.onSignInClick} text="Sign Up" />
+                <Button
+                    actionOnClick={props.onLogInClick}
+                    text="Sign In"
+                />
+                <Button
+                    actionOnClick={props.onSignInClick}
+                    text="Sign Up"
+                />
             </div>
         </div>
     )

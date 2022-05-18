@@ -9,7 +9,7 @@ const Header = (props) => {
                 DataMiningTools
             </div>
             <div className={style.userBox}>
-                User
+                {props.userName}
             </div>
         </div>
     )

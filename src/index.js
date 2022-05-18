@@ -4,17 +4,10 @@ import { Provider } from 'react-redux';
 import App from './Body/pages/App';
 import store from './redux/reduxState';
 
-// let renderEntireTree = (store) => {
-//   // debugger
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
 root.render(
   <Provider store={store}>
     <App />
   </Provider>
-
 );
-// }
-
-
-// renderEntireTree(store);
-

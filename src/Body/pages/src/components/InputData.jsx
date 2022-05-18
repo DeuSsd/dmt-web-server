@@ -9,10 +9,9 @@ const InputData = (props) => {
         let body = e.target.value;
         props.onChange(body);
     }
-    
+
     console.log(props.value)
     return (
-       
         <div className={style.InputData}>
             <div>
                 {props.text}
