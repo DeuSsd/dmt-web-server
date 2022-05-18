@@ -1,21 +1,21 @@
 .APIsGrid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    
-    position: relative;
-    // left: 50%;
-    // top: 50%;
-    top: 20%;
-    right: 0;
-    left: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 
-    margin: auto;
+  position: relative;
+  // left: 50%;
+  // top: 50%;
+  top: 20%;
+  right: 0;
+  left: 0;
 
-    width: 1000px;
+  margin: auto;
 
-    padding: 8px;
-    margin-bottom: 8px;
-    border-radius: 2px; 
-    
-    gap: 10px;
+  width: 1000px;
+
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 2px;
+
+  gap: 10px;
 }

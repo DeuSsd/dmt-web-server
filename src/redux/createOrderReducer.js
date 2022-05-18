@@ -56,12 +56,12 @@ let initialState = {
         SelectedAPIs: {
             id: 'SelectedAPIs',
             title: 'SelectedAPIs',
-            APIsId: ['4'],
+            APIsId: ['1', '2', '3', '4'],
         },
         UnselectedAPIs: {
             id: 'UnselectedAPIs',
             title: 'UnselectedAPIs',
-            APIsId: ['1', '2', '3'],
+            APIsId: [],
         }
     },
 
@@ -137,21 +137,21 @@ let createOrderReducer = (state = initialState, action) => {
             }
 
             let APIsIdSource = [...state.APIsColumns[source.droppableId].APIsId]
-            APIsIdSource = dropAPiByID(draggableId,APIsIdSource)
+            APIsIdSource = dropAPiByID(draggableId, APIsIdSource)
             let APIsIdDestination = [...state.APIsColumns[destination.droppableId].APIsId, draggableId]
 
             // debugger
 
-    
+
             if (
-                destination.droppableId === source.droppableId 
+                destination.droppableId === source.droppableId
                 // destination.index === source.index
             ) {
                 return state;
             }
 
-     
-       
+
+
             copyState = {
                 ...state
             }
