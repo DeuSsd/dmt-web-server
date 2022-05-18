@@ -1,11 +1,13 @@
 import { configureStore } from '@reduxjs/toolkit'
 import authorizationReducer from './authorizationReducer'
+import createOrderReducer from './createOrderReducer';
 
 
 let store = configureStore(
     {
         reducer: {
-            authorizationPage: authorizationReducer,
+            authorization: authorizationReducer,
+            createOrderPage: createOrderReducer,
         }
     })
 

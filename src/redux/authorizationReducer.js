@@ -8,6 +8,7 @@ const INPUT_PASSWORD_TEXT_UPDATE = 'INPUT_PASSWORD_TEXT_UPDATE'
 
 let initialState = {
     'token': '',
+    'name': 'Denis',
     'login': "user",
     'password': "@Qwerty1234",
     'email': '',

@@ -6,7 +6,9 @@ import style from "./App.module.scss";
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 
-import MainPage from './MainPage/MainPage';
+import CreateOrderPageContainer from './createOrderPage/CreateOrderPageContainer';
+
+
 import AuthorizationPageContainer from './AuthorizationPage/AuthorizationPageContainer';
 
 
@@ -21,8 +23,8 @@ function App(props) {
     <BrowserRouter>
       <div className={style.app}>
         <Routes>
-          {/* <Route exect path='/main' element={<MainPage initialState={props.store.authState} />} /> */}
-          <Route path='/' element={<AuthorizationPageContainer />} />
+          <Route exect path='/' element={<CreateOrderPageContainer />} />
+          <Route path='/auth' element={<AuthorizationPageContainer />} />
         </Routes>
       </div>
     </BrowserRouter>

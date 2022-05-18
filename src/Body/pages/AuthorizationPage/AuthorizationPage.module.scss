@@ -1,78 +1,72 @@
 @import "../src/scss/colors.scss";
 
 .Authorization {
-    // center
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
+  // center
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
 
-    padding: 30px;
-    
-    display: grid;
-    gap: 10px;
-    // grid-template-columns: 1fr;
+  padding: 30px;
 
-    grid-template-areas:
+  display: grid;
+  gap: 10px;
+  // grid-template-columns: 1fr;
+
+  grid-template-areas:
     "A"
     "B"
     "C"
     "D";
 
+  // // grid-template-rows: 1fr 1fr 1fr;
+  align-items: center;
 
-    // // grid-template-rows: 1fr 1fr 1fr;
-    align-items: center;
+  width: calc(600px - 2 * $border_width);
+  // height: calc(400px - 2*$border_width);
+  height: auto;
+  background-color: $c50;
 
-    width:  calc(600px - 2*$border_width);
-    // height: calc(400px - 2*$border_width);
-    height: auto;
-    background-color: $c50;
-
-    
-
-    border-radius: 25px;
-    border-width: $border_width;
-    border-color:  $c600 ;
-    border-style: solid;
+  border-radius: 25px;
+  border-width: $border_width;
+  border-color: $c600;
+  border-style: solid;
 }
 
 .text {
-    text-align: center;
+  text-align: center;
 
-    font-family: $font_family;
-    font-size: $font_size_h1;
-    margin: 0 auto;
+  font-family: $font_family;
+  font-size: $font_size_h1;
+  margin: 0 auto;
 
-    grid-area: A;
+  grid-area: A;
 }
 
-
-
 .Login {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: 200px auto;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 200px auto;
 
-    grid-area: B;
+  grid-area: B;
 }
 
 .Password {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: 100px auto;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 100px auto;
 
-    
-    grid-area: C;
+  grid-area: C;
 }
 
 .Button__place {
-    // margin-right: 30px;
-    grid-area: D;
+  // margin-right: 30px;
+  grid-area: D;
 
-    // height: 140px;
+  // height: 140px;
 
-    display: flex;
-    justify-content: flex-end;
-    align-content: flex-end;
-    gap: 20px;
+  display: flex;
+  justify-content: flex-end;
+  align-content: flex-end;
+  gap: 20px;
 }
