@@ -41,6 +41,7 @@ const APIsContainer = (props) => {
             ref={props.innerRef}
 
         >
+            <h2>{props.APIsColumn.title}</h2>
             {APIsItems}
         </div>
     )
