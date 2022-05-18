@@ -4,35 +4,9 @@ import Button from "../src/components/Button";
 import InputData from "../src/components/InputData";
 
 
-import AuthService from "../../../services/auth.service";
-import UserService from "../../../services/user.service";
-
-
-
-// {/* {console.log(AuthService.login("user","@Qwerty1234"))} */}
-
-
-function login (initialState) {
-    AuthService.login("user","@Qwerty1234").then(data => {
-        initialState["token"] = data["token"];
-        initialState["stateAuth"] = true;
-        console.log(initialState)
-    })
-};
-
-
-// function temp(initialState) {
-//     console.log(initialState["token"])
-//     login (initialState).then(
-//         console.log(initialState["token"]))
-
-// }
-
-
 const AuthorizationPage = (props) => {
 
-    debugger
-    return(
+    return (
         <div className={style.Authorization}>
             <div >
                 <div className={style.text}>
@@ -40,14 +14,26 @@ const AuthorizationPage = (props) => {
                 </div>
             </div>
             <div>
-                <InputData input_type = "text" text="Login:" placeholder="Login" />
+                <InputData
+                    onChange={props.updateLoginTextArea}
+                    value={props.loginValue}
+                    input_type="text"
+                    text="Login:"
+                    placeholder="Login"
+                />
             </div>
             <div>
-                <InputData input_type = "password" text="Password:" placeholder="Password" />
+                <InputData
+                    onChange={props.updatePasswordTextArea}
+                    value={props.passwordValue}
+                    input_type="password"
+                    text="Password:"
+                    placeholder="Password"
+                />
             </div>
             <div className={`${style.Button__place}`}>
-                <Button initialState={props.initialState} onClick={login} text="Sign In" />
-                <Button initialState={props.initialState} onClick={() => {UserService.getPublicContent(props.initialState)}} text="Sign Up" />     
+                <Button actionOnClick={props.onLogInClick} text="Sign In" />
+                <Button actionOnClick={props.onSignInClick} text="Sign Up" />
             </div>
         </div>
     )

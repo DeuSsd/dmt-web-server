@@ -1,13 +1,20 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import App from './Body/pages/App';
-import state from './redux/state';
+import store from './redux/reduxState';
 
+// let renderEntireTree = (store) => {
+//   // debugger
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 root.render(
-    <App state = {state}/>
+  <Provider store={store}>
+    <App />
+  </Provider>
+
 );
+// }
 
 
+// renderEntireTree(store);
 
