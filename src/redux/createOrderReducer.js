@@ -70,19 +70,19 @@ let initialState = {
     },
 
     APIsColumns: {
-        SelectedAPIs: {
-            id: 'SelectedAPIs',
-            title: 'SelectedAPIs',
-            APIsId: ['1', '2', '3', '4'],
-        },
         UnselectedAPIs: {
             id: 'UnselectedAPIs',
-            title: 'UnselectedAPIs',
+            title: 'Доступные API',
+            APIsId: ['1', '2', '3', '4'],
+        },
+        SelectedAPIs: {
+            id: 'SelectedAPIs',
+            title: 'Выбранные API',
             APIsId: [],
         }
     },
 
-    APIsColumnsOrder: ['SelectedAPIs', 'UnselectedAPIs']
+    APIsColumnsOrder: ['UnselectedAPIs','SelectedAPIs']
 }
 
 
@@ -119,9 +119,11 @@ let createOrderReducer = (state = initialState, action) => {
 
     switch (action.type) {
         case SELECT_PAGE:
+
+            // debugger
             return {
                 ...state,
-                selectedPage: action.selectedPage,
+                SelectedPage: action.selectedPage,
             }
 
         case DRAG_END_SELECTOR_API:

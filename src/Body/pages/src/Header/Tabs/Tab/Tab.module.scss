@@ -22,21 +22,27 @@
 
 
 .textLink {
-    text-decoration:none;
     padding: 10px;
     margin:0 auto;
     font-family: $font_family;
     font-size: $font_size_h2;
-    
 }
 
-
-// .textLink {
+// .textLink:hover { 
 //     text-decoration:none;
-//     padding: 10px;
-//     margin:0 auto;
-//     font-family: $font_family;
-//     font-size: $font_size_h2;
+// }
+
+// .textLink:active {
+//     text-decoration:none;
+// }
+
+// .textLink:visited {
+//     text-decoration:none;
+// }
+
+
+// .textLink:link { 
+//     text-decoration:none;
 // }
 
 
@@ -47,3 +53,7 @@
 }
 
 
+.link {
+    
+    text-decoration: inherit;
+}

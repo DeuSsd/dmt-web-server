@@ -4,21 +4,32 @@ import style from "./Tab.module.scss";
 
 
 const Tab = (props) => {
-    // let pathnameLocation = useLocation().pathname
+    let pathnameLocation = `${style.Tab} ${props.selectedPage === props.tabItem ? style.selected : ''}`
+    // debugger
+    // ${props.selectedPage === props.item ? style.selected : ''}`
     return (
-        <div className={`${style.Tab} ${props.selectedPage === props.item ? style.selected : ''}`}>
-            <div>
-                <NavLink
-                    to={`${props.pathnameLocation}${props.tabLink}`}
-                    activeClassName={style.selected}
-                    className={style.textLink}
-                    // exact={true}
-                >
+        // <div className={`${style.Tab}`}>
+        // {/* <div> */ }
+        < NavLink
+            to={`${props.pathnameLocation}${props.tabLink}`}
+            // activeClassName={style.selected}
+            className={style.link}
+        // exact={true}
+        >
+
+            <div 
+            onClick={() => props.onTabPageClickCreator(props.tabItem)}
+            className={`${style.Tab} ${props.selectedPage === props.tabItem ? style.selected : ''}`}>
+            {/* className={`${props.selectedPage === props.tabItem ? style.selected : ''}`}> */}
+                <div className={style.textLink}>
                     {props.tabItem}
-                </NavLink>
+                </div>
             </div>
-        </div>
+
+        </ NavLink>
     )
 }
 
 export default Tab;
+
+
