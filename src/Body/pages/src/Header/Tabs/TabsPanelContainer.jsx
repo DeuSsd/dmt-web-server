@@ -5,7 +5,8 @@ import TabsPanel from "./TabsPanel";
 const mapStateToProps = (state) => {
     return {
         tabPages: state.createOrderPage.Pages,
-        selectedPage: state.createOrderPage.SelectedPage
+        selectedPage: state.createOrderPage.SelectedPage,
+        tabLinks: state.createOrderPage.TabLinks,
     }
 }
 

@@ -1,42 +1,36 @@
 @import "../scss/colors.scss";
 
 .header {
-    display: grid;
-    gap: 10px;
-    grid-template-columns: auto 200px;
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto 200px;
 
-    
-    align-items: flex-end;
-    width:  calc(100% - 2*$border_width);
-    height: 150px;
+  align-items: flex-end;
+  width: calc(100% - 2 * $border_width);
+  height: 150px;
 
-    background-color: $c100;
+  background-color: $c100;
 
-    margin: 0px;
-    padding: 0px;
-    border-radius: 25px;
-    border-width: $border_width;
-    border-color:  $c600 ;
-    border-style: solid;
+  margin: 0px;
+  padding: 0px;
+  border-radius: 25px;
+  border-width: $border_width;
+  border-color: $c600;
+  border-style: solid;
 }
 
-
-
 .textLogo {
-    position:absolute;
-    top: 50px;
-    left: auto;
-    right:45vw;
-    font-family: $font_family;
-    font-size: $font_size_h1;
-    
+  position: absolute;
+  top: 50px;
+  left: auto;
+  right: 45vw;
+  font-family: $font_family;
+  font-size: $font_size_h1;
 }
 
 .userBox {
-    color: $c900;
-    margin: auto;
-    font-family: $font_family;
-    font-size: $font_size_h1;
-
-    
+  color: $c900;
+  margin: auto;
+  font-family: $font_family;
+  font-size: $font_size_h1;
 }

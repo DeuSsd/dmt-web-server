@@ -2,8 +2,22 @@ const DRAG_END_SELECTOR_API = 'DRAG_END_SELECTOR_API'
 const SELECT_PAGE = 'SELECT_PAGE'
 
 let initialState = {    
-    Pages: ['Выбор','Конфигурирование','Предпросмотр','Заказ'],
+    Pages: [
+        'Выбор',
+        'Конфигурирование',
+        'Предпросмотр',
+        'Заказ'],
+
+    TabLinks: {
+        'Выбор':'/api-choose',
+        'Конфигурирование':'/api-configure',
+        'Предпросмотр':'/api-preview',
+        'Заказ':'/api-order'
+    },
+
     SelectedPage: 'Выбор',
+
+
     APIs: {
         '1': {
             id: '1',

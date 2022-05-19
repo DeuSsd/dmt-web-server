@@ -9,7 +9,7 @@
     background-color: $c50;
 
     color: $c900;
-    
+
     justify-items: center;
     text-align: center;
     align-items: center;
@@ -21,13 +21,25 @@
 }
 
 
-.text {
+.textLink {
+    text-decoration:none;
     padding: 10px;
     margin:0 auto;
     font-family: $font_family;
     font-size: $font_size_h2;
     
 }
+
+
+// .textLink {
+//     text-decoration:none;
+//     padding: 10px;
+//     margin:0 auto;
+//     font-family: $font_family;
+//     font-size: $font_size_h2;
+// }
+
+
 
 .selected {
     background-color: $c500;

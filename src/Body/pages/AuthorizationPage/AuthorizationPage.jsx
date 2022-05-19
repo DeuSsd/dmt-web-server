@@ -2,6 +2,7 @@ import React from "react";
 import style from "./AuthorizationPage.module.scss";
 import Button from "../src/components/Button";
 import InputData from "../src/components/InputData";
+import { NavLink } from "react-router-dom";
 
 
 const AuthorizationPage = (props) => {
@@ -39,6 +40,11 @@ const AuthorizationPage = (props) => {
                     actionOnClick={props.onSignInClick}
                     text="Sign Up"
                 />
+                 <NavLink
+                    to={`/apiselector/api-choose`}
+                >
+                    CHOOSE
+                </NavLink>
             </div>
         </div>
     )

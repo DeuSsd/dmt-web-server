@@ -5,18 +5,22 @@ import style from "./TabsPanel.module.scss";
 
 const TabsPanel = (props) => {
 
-    
-    let tabsElements = props.tabPages.map((item) => {
-        return (
-            <Tab selectedPage={props.selectedPage} item={item}/>
-        )
-    })
+
+    let tabsElements = props.tabPages.map(
+        tabItem =>
+            <Tab 
+            selectedPage={props.selectedPage}
+            pathnameLocation={props.pathnameLocation}
+             tabItem={tabItem} 
+             tabLink={props.tabLinks[tabItem]}
+              />
+    )
 
 
 
     return (
         <div className={style.TabPanel} >
-           {tabsElements}
+            {tabsElements}
         </div>
     )
 }

@@ -18,13 +18,13 @@ import AuthorizationPageContainer from './AuthorizationPage/AuthorizationPageCon
 
 
 function App(props) {
-
+  // '/apiselector'
   return (
     <BrowserRouter>
       <div className={style.app}>
         <Routes>
-          <Route exect path='/' element={<CreateOrderPageContainer />} />
-          <Route path='/auth' element={<AuthorizationPageContainer />} />
+          <Route path='/apiselector/*' element={<CreateOrderPageContainer pathnameLocation='/apiselector'/>} />
+          <Route path='/' element={<AuthorizationPageContainer />} />
         </Routes>
       </div>
     </BrowserRouter>
