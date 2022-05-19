@@ -4,10 +4,10 @@ import style from "./Tab.module.scss";
 
 const Tab = (props) => {
     return (
-        <div className={props.selectedPage == props.item  ? style.TabSelected : style.TabUnselected}>
-            {/* <div className={style.text}> */}
+        <div className={`${style.Tab} ${props.selectedPage === props.item ? style.selected : ''}`}>
+            <div className={style.text}>
                 {props.item}
-            {/* </div> */}
+            </div>
         </div>
     )
 }
