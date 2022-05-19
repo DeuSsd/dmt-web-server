@@ -1,12 +1,20 @@
 import React from "react";
 import style from "./Header.module.scss";
+import TabsPanelContainer from "./Tabs/TabsPanelContainer";
+
+
+
 
 
 const Header = (props) => {
-    return(
+
+    return (
         <div className={style.header}>
-            <div className={style.textLogo}>
-                DataMiningTools
+            <div>
+                <div className={style.textLogo}>
+                    DataMiningTools
+                </div>
+                <TabsPanelContainer/>
             </div>
             <div className={style.userBox}>
                 {props.userName}

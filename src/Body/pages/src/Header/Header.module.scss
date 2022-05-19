@@ -5,15 +5,15 @@
     gap: 10px;
     grid-template-columns: auto 200px;
 
-    justify-items: center;
-
+    
+    align-items: flex-end;
     width:  calc(100% - 2*$border_width);
-    height: 100px;
+    height: 150px;
 
-    background-color: $c50;
+    background-color: $c100;
 
-
-    align-items: center;
+    margin: 0px;
+    padding: 0px;
     border-radius: 25px;
     border-width: $border_width;
     border-color:  $c600 ;
@@ -23,18 +23,18 @@
 
 
 .textLogo {
-    display: flex;
-    color: $c900;
+    position:absolute;
+    top: 50px;
+    left: auto;
+    right:45vw;
     font-family: $font_family;
     font-size: $font_size_h1;
-
-    
     
 }
 
 .userBox {
     color: $c900;
-    
+    margin: auto;
     font-family: $font_family;
     font-size: $font_size_h1;
 

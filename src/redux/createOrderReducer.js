@@ -1,6 +1,9 @@
 const DRAG_END_SELECTOR_API = 'DRAG_END_SELECTOR_API'
+const SELECT_PAGE = 'SELECT_PAGE'
 
-let initialState = {
+let initialState = {    
+    Pages: ['Выбор','Конфигурирование','Предпросмотр','Заказ'],
+    SelectedPage: 'Выбор',
     APIs: {
         '1': {
             id: '1',
@@ -65,24 +68,8 @@ let initialState = {
         }
     },
 
-
     APIsColumnsOrder: ['SelectedAPIs', 'UnselectedAPIs']
 }
-// tasks: {
-//         'task': { id: 'task', content: 'Some content' },
-//         'task1': { id: 'task1', content: 'Some content' },
-//         'task2': { id: 'task2', content: 'Some content' },
-//         'task3': { id: 'task3', content: 'Some content' },
-//         'task4': { id: 'task4', content: 'Some content' },
-//         'task5': { id: 'task5', content: 'Some content' },
-//     },
-
-//     columns: {
-//         'coloumn-1': {
-//             id: 'column1',
-//             title: 'todo',
-//             tasksID: ['task1', 'task2', 'task3', 'task4', 'task5']
-//         },
 
 
 let createOrderReducer = (state = initialState, action) => {
@@ -117,6 +104,11 @@ let createOrderReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
+        case SELECT_PAGE:
+            return {
+                ...state,
+                selectedPage: action.selectedPage,
+            }
 
         case DRAG_END_SELECTOR_API:
             const { destination, source, draggableId } = action.result;
@@ -199,6 +191,7 @@ let createOrderReducer = (state = initialState, action) => {
 }
 
 
+export const onTabPageClickCreator = (selectedPage) => ({ type: SELECT_PAGE, selectedPage: selectedPage })
 export const onDragEndCreator = (result) => ({ type: DRAG_END_SELECTOR_API, result: result })
 // export const updatePasswordTextAreaCreator = (body) => ({ type: INPUT_PASSWORD_TEXT_UPDATE, body: body })
 

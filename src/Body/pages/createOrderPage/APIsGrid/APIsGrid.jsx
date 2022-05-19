@@ -7,7 +7,6 @@ import APIsContainer from "./components/APIsContainer/APIsContainer";
 const APIsGrid = (props) => {
     // debugger
     let APIsColumnsItems = props.APIsColumnsOrder.map((APiColumn, index) => {
-        let ss = props.APIsColumns[APiColumn].id
         // debugger
         return (
             <Droppable droppableId={props.APIsColumns[APiColumn].id}>
@@ -21,8 +20,7 @@ const APIsGrid = (props) => {
                         index={index}
                         {provided.placeholder}
                     </APIsContainer>
-                )
-                }
+                )}
             </Droppable>
         )
     })
@@ -32,7 +30,6 @@ const APIsGrid = (props) => {
 
     // debugger
     return (
-
         <DragDropContext
             onDragEnd={props.onDragEnd}
         >
@@ -40,7 +37,6 @@ const APIsGrid = (props) => {
                 className={style.APIsGrid}>
                 {APIsColumnsItems}
             </div>
-
         </DragDropContext>
 
     )
