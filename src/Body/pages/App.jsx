@@ -24,7 +24,7 @@ function App(props) {
       <div className={style.app}>
         <Routes>
           <Route path='/apiselector/*' element={<CreateOrderPageContainer pathnameLocation='/apiselector'/>} />
-          <Route path='/' element={<AuthorizationPageContainer />} />
+          <Route path='/' element={<AuthorizationPageContainer pathnameLocation='/apiselector'/>} />
         </Routes>
       </div>
     </BrowserRouter>

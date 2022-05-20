@@ -32,19 +32,31 @@ const AuthorizationPage = (props) => {
                 />
             </div>
             <div className={`${style.Button__place}`}>
-                <Button
-                    actionOnClick={props.onLogInClick}
-                    text="Sign In"
-                />
+
+                < NavLink
+                    to={`${props.pathnameLocation}/api-choose`}
+                    // activeClassName={style.selected}
+                    className={style.link}
+                // exact={true}
+                >
+                    <Button
+                        actionOnClick={props.onLogInClick}
+                        text="Sign In"
+                    />
+
+
+                </ NavLink>
+
+
                 <Button
                     actionOnClick={props.onSignInClick}
                     text="Sign Up"
                 />
-                 <NavLink
+                {/* <NavLink
                     to={`/apiselector/api-choose`}
                 >
                     CHOOSE
-                </NavLink>
+                </NavLink> */}
             </div>
         </div>
     )

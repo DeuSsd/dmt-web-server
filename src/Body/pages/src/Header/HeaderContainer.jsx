@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { onTabPageClickCreator } from "../../../../redux/createOrderReducer";
+import { logOutCreator } from "../../../../redux/authorizationReducer";
 import Header from "./Header";
 
 
@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        onLogOutClick: () => { dispatch(logOutCreator()) },
     }
 }
 

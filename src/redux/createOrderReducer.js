@@ -1,6 +1,7 @@
 const DRAG_END_SELECTOR_API = 'DRAG_END_SELECTOR_API'
 const SELECT_PAGE = 'SELECT_PAGE'
 
+
 let initialState = {    
     Pages: [
         'Выбор',
