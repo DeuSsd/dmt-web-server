@@ -11,14 +11,25 @@ const ParameterContainerAPI = (props) => {
     const description = props.parameterObject.description_parameters;
     const type = props.parameterObject.type;
     // value: ''
+
+
+    let selectElementType = () => {
+        switch (type) {
+            case 'time':
+                return (<InputFieldPTContainer />)
+            default:
+                return ('')
+        }
+    }
+
+
     return (
         <div className={style.ParameterContainerAPI}>
             <div className={style.title}>
                 {title}
             </div>
-
             <div className={style.parameterField}>
-                <InputFieldPTContainer />
+                {selectElementType()}
             </div>
             <div className={style.description}>
                 {description}

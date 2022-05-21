@@ -25,10 +25,12 @@ const ConfiguratorContainerAPI = (props) => {
                     <span>{title}</span>
                 </div>
                 <div>
-                    <span>{title}</span>
+                    <span>{title} </span> 
+                    {/* <span>{title} </span> //TODO добавить завершено 0/3 */}
                 </div>
                 <div>
                     <span>{title}</span>
+                    {/* <span>{"Описание параметра"}</span> //TODO  баг с отображением заголовка Описание параметра 0/3 */}
                 </div>
             </div>
             <div className={style.contentAPI}>
