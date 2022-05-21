@@ -5,9 +5,8 @@ import ConfiguratorAPIs from "./ConfiguratorAPIs";
 
 const mapStateToProps = (state) => {
     return {
-        // APIs: state.createOrderPage.APIs,
-        // APIsColumns: state.createOrderPage.APIsColumns,
-        // APIsColumnsOrder: state.createOrderPage.APIsColumnsOrder,
+        APIs: state.createOrderPage.APIs,
+        APIsOrderID: state.createOrderPage.APIsOrderID,
     }
 }
 

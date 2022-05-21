@@ -1,0 +1,48 @@
+@import "./../../../../../src/scss/colors.scss";
+
+.ParameterContainerAPI {
+  display: grid;
+  gap: 10px;
+  grid-template-columns:  1fr 1fr 2fr;
+
+  justify-items: center;
+  width: calc(100% - 2 * $border_width);
+  min-height: 20px;
+
+  border-width: $border_width;
+  border-color: $c600;
+  border-style: solid;
+}
+
+
+.description {
+  width: calc(100% - 2 * $border_width);
+  // height: 30px;
+
+  border-width: $border_width;
+  border-color: $c600;
+  border-style: solid;
+}
+
+
+
+
+
+.description {
+  width: 100%;
+  // height: 100%;
+
+  border-width: $border_width;
+  border-color: $c600;
+  border-style: solid;
+}
+
+
+.parameterField {
+  width: 100%;
+  // height: 20px;
+
+  border-width: $border_width;
+  border-color: $c600;
+  border-style: solid;
+}

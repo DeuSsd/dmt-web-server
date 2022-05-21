@@ -3,6 +3,13 @@ import ConfiguratorContainerAPI from "../ConfiguratorAPIs/components/Configurato
 import style from "./ConfiguratorAPIs.module.scss"
 
 const ConfiguratorAPIs = (props) => {
+    let ConfiguratorAPiItems = props.APIsOrderID.map((APiID) => {
+        return (
+            <ConfiguratorContainerAPI 
+            API={props.APIs[APiID]}
+            />
+        )
+    })
 
     // debugger
     return (
@@ -10,7 +17,8 @@ const ConfiguratorAPIs = (props) => {
             
             <div
                 className={style.ConfiguratorAPIs}>
-                    <ConfiguratorContainerAPI/>
+
+                    {ConfiguratorAPiItems}
             </div>
 
 

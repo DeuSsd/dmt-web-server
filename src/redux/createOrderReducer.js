@@ -19,6 +19,7 @@ let initialState = {
 
     SelectedPage: 'Выбор',
 
+    APIsOrderID: ['1','2','3','4'],
 
     APIs: {
         '1': {
