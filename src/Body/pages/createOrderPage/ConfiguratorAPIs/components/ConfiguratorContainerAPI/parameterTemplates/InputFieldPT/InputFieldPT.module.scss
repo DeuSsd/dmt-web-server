@@ -1,0 +1,13 @@
+@import "./../../../../../src/scss/colors.scss";
+
+.InputFieldPT {
+  padding: 8px;
+  margin-bottom: 8px;
+  border-radius: 2px;
+  background-color: $c100;
+
+  border-radius: 20px;
+  border-width: $border_width;
+  border-color: $c100;
+  border-style: solid;
+}

@@ -1,8 +1,9 @@
 const DRAG_END_SELECTOR_API = 'DRAG_END_SELECTOR_API'
 const SELECT_PAGE = 'SELECT_PAGE'
+const INPUT_API_PARAMETER_TEXT_UPDATE = 'INPUT_API_PARAMETER_TEXT_UPDATE'
 
 
-let initialState = {    
+let initialState = {
     Pages: [
         'Выбор',
         'Конфигурирование',
@@ -10,10 +11,10 @@ let initialState = {
         'Заказ'],
 
     TabLinks: {
-        'Выбор':'/api-choose',
-        'Конфигурирование':'/api-configure',
-        'Предпросмотр':'/api-preview',
-        'Заказ':'/api-order'
+        'Выбор': '/api-choose',
+        'Конфигурирование': '/api-configure',
+        'Предпросмотр': '/api-preview',
+        'Заказ': '/api-order'
     },
 
     SelectedPage: 'Выбор',
@@ -24,50 +25,82 @@ let initialState = {
             id: '1',
             title: 'Погода',
             api: 'weatherAPI',
-            parameters: []
+            description: "Позволяет собрать данные по погоде в разных городах",
+            parameters: [
+                {
+                    title_parameter: "Время начала",
+                    parameter: "start_time",
+                    type: "time",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '', // обновляет юзер
+                },
+                {
+                    title_parameter: "Время начала",
+                    parameter: "start_time",
+                    type: "time",
+                    description_parameters: 'Параметр отвечающий за конец выборки',
+                    value: '',
+                },
+            ]
         },
         '2': {
             id: '2',
             title: 'Погода',
             api: 'COVID_API',
-            parameters: []
+            description: "Позволяет собрать данные по погоде в разных городах",
+            parameters: [
+                {
+                    title_parameter: "Время начала",
+                    parameter: "start_time",
+                    type: "time",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                },
+                {
+                    title_parameter: "Время начала",
+                    parameter: "start_time",
+                    type: "time",
+                    description_parameters: 'Параметр отвечающий за конец выборки',
+                },
+            ]
         },
         '3': {
             id: '3',
             title: 'Погода',
             api: 'COVID_API_2',
-            parameters: []
+            description: "Позволяет собрать данные по погоде в разных городах",
+            parameters: [
+                {
+                    title_parameter: "Время начала",
+                    parameter: "start_time",
+                    type: "time",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                },
+                {
+                    title_parameter: "Время начала",
+                    parameter: "start_time",
+                    type: "time",
+                    description_parameters: 'Параметр отвечающий за конец выборки',
+                },
+            ]
         },
         '4': {
             id: '4',
             title: 'Погода',
             api: 'COVID_API_3',
-            parameters: []
+            description: "Позволяет собрать данные по погоде в разных городах",
+            parameters: [
+                {
+                    "title_parameter": "Время начала",
+                    "parameter": "start_time",
+                    "type": "time"
+                },
+                {
+                    "title_parameter": "Время конца",
+                    "parameter": "start_time",
+                    "type": "time"
+                },
+            ]
         },
-        // weatherAPI: {
-        //     id: '1',
-        //     title: 'Погода',
-        //     api: 'weatherAPI',
-        //     parameters: []
-        // },
-        // COVID_API: {
-        //     id: '2',
-        //     title: 'Погода',
-        //     api: 'COVID_API',
-        //     parameters: []
-        // },
-        // COVID_API_2: {
-        //     id: '3',
-        //     title: 'Погода',
-        //     api: 'COVID_API_2',
-        //     parameters: []
-        // },
-        // COVID_API_3: {
-        //     id: '4',
-        //     title: 'Погода',
-        //     api: 'COVID_API_3',
-        //     parameters: []
-        // },
     },
 
     APIsColumns: {
@@ -83,7 +116,7 @@ let initialState = {
         }
     },
 
-    APIsColumnsOrder: ['UnselectedAPIs','SelectedAPIs']
+    APIsColumnsOrder: ['UnselectedAPIs', 'SelectedAPIs']
 }
 
 
@@ -160,7 +193,6 @@ let createOrderReducer = (state = initialState, action) => {
             }
 
 
-
             copyState = {
                 ...state
             }
@@ -206,6 +238,16 @@ let createOrderReducer = (state = initialState, action) => {
             return state
     }
 }
+
+
+
+export const updateAPIParameterInputAreaCreator = (typeParameterAPI, valueParameterAPI) => (
+    { type: INPUT_API_PARAMETER_TEXT_UPDATE, 
+        typeParameterAPI: typeParameterAPI,
+        valueParameterAPI:valueParameterAPI
+ })
+// export const updatePasswordTextAreaCreator = (body) => ({ type: INPUT_PASSWORD_TEXT_UPDATE, body: body })
+
 
 
 export const onTabPageClickCreator = (selectedPage) => ({ type: SELECT_PAGE, selectedPage: selectedPage })
