@@ -2,29 +2,24 @@ import React from "react";
 import ConfiguratorContainerAPI from "../ConfiguratorAPIs/components/ConfiguratorContainerAPI/ConfiguratorContainerAPI";
 import style from "./ConfiguratorAPIs.module.scss"
 
+// TODO сделать кнопку свернуть/развернуть
 const ConfiguratorAPIs = (props) => {
     let ConfiguratorAPiItems = props.APIsOrderID.map((APiID) => {
         return (
-            <ConfiguratorContainerAPI 
-            API={props.APIs[APiID]}
+            <ConfiguratorContainerAPI
+                API={props.APIs[APiID]}
             />
         )
     })
 
     // debugger
     return (
-        <div> 
-            
+        <div>
             <div
                 className={style.ConfiguratorAPIs}>
-
-                    {ConfiguratorAPiItems}
+                {ConfiguratorAPiItems}
             </div>
-
-
         </div>
-
-
     )
 }
 

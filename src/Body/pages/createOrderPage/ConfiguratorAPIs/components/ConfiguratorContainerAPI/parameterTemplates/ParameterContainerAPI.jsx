@@ -5,19 +5,23 @@ import InputFieldPTContainer from "./InputFieldPT/InputFieldPTContainer";
 
 
 const ParameterContainerAPI = (props) => {
+
+    const title = props.parameterObject.title_parameter;
+    const parameter = props.parameterObject.parameter;
+    const description = props.parameterObject.description_parameters;
+    const type = props.parameterObject.type;
+    // value: ''
     return (
         <div className={style.ParameterContainerAPI}>
             <div className={style.title}>
-                Parameter 1
+                {title}
             </div>
 
             <div className={style.parameterField}>
-
                 <InputFieldPTContainer />
-
             </div>
             <div className={style.description}>
-                description API Parameter
+                {description}
             </div>
         </div>
     )

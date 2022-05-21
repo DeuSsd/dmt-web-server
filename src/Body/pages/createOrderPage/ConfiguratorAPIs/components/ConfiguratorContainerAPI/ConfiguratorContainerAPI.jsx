@@ -7,8 +7,6 @@ import ParameterContainerAPI from "./parameterTemplates/ParameterContainerAPI";
 const ConfiguratorContainerAPI = (props) => {
     let title = props.API.title
     let description = props.API.description
-    let parameters = props.API.parameters
-
 
 
     // debugger
@@ -23,31 +21,24 @@ const ConfiguratorContainerAPI = (props) => {
     return (
         <div className={style.ConfiguratorContainerAPI}>
             <div className={style.header}>
-                header
+                <div>
+                    <span>{title}</span>
+                </div>
+                <div>
+                    <span>{title}</span>
+                </div>
+                <div>
+                    <span>{title}</span>
+                </div>
             </div>
             <div className={style.contentAPI}>
                 <div className={style.descriptionAPI}>
-                    description API
+                    {description}
                 </div>
                 <div className={style.parametersAPI}>
                     {ParameterItems}
-                    {/* <ParameterContainerAPI />
-                    <ParameterContainerAPI />
-                    <ParameterContainerAPI />
-                    <ParameterContainerAPI />
-                    <ParameterContainerAPI /> */}
-                    {/* <div  className={style.oneParameterAPI}>
-                        <InputFieldPTContainer/>
-                         </div>
-                    <div  className={style.oneParameterAPI}> something </div>
-                    <div  className={style.oneParameterAPI}> something </div>
-                    <div  className={style.oneParameterAPI}> something </div>
-                    <div  className={style.oneParameterAPI}> something </div>
-                    <div  className={style.oneParameterAPI}> something </div> */}
                 </div>
-
             </div>
-
         </div>
     )
 }

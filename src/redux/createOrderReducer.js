@@ -200,10 +200,10 @@ let createOrderReducer = (state = initialState, action) => {
 
             copyState.APIsColumns[source.droppableId].APIsId = [...APIsIdSource]
             copyState.APIsColumns[destination.droppableId].APIsId = [...APIsIdDestination]
-            console.log(state.APIsColumns.UnselectedAPIs.APIsId)
-            console.log(state.APIsColumns.SelectedAPIs.APIsId)
-            console.log(copyState.APIsColumns.UnselectedAPIs.APIsId)
-            console.log(copyState.APIsColumns.SelectedAPIs.APIsId)
+            // console.log(state.APIsColumns.UnselectedAPIs.APIsId)
+            // console.log(state.APIsColumns.SelectedAPIs.APIsId)
+            // console.log(copyState.APIsColumns.UnselectedAPIs.APIsId)
+            // console.log(copyState.APIsColumns.SelectedAPIs.APIsId)
 
             // debugger
             return copyState

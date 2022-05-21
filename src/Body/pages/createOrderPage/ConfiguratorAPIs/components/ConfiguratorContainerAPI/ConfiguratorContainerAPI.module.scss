@@ -6,70 +6,116 @@
   // grid-template-columns: auto 200px;
 
   // justify-items: center;
+  position: relative;
+  top: 20px;
 
-
-  width: calc(100% - 2 * $border_width);
+  width: calc(100% - 2 * $border_width - 15px);
   height: 100%;
 
   background-color: $c100;
 
   margin: 0px;
-  padding: 5px;
+
   border-radius: 25px;
   border-width: $border_width;
   border-color: $c600;
   border-style: solid;
-}
 
+
+  padding: 10px;
+}
 
 .header {
-  width: calc(100% - 2 * $border_width);
-  height: 30px;
+  margin: 0 auto; /* выравнивание обертки по центру документа */
+  width: 98%;
+  display: grid;
+  // gap: 10px;
+  grid-template-columns: 4fr 3fr 6fr;
 
-  border-width: $border_width;
-  border-color: $c600;
-  border-style: solid;
+  // width: calc(100% - 2 * $border_width);
+  // height: 30px;
+
+  // border-width: $border_width;
+  // border-color: $c600;
+  // border-style: solid;
+}
+
+.header div {
+  display: inline-block; 
+  text-align: center; /* выравнивание заголовка по центру обертки */
+  width: 100%; /* ширина обертки. На самом деле для фиксированной верстки можно использовать и px, но лучше сразу адаптировать под разные устройства, т.к. это, что называется, тренди :-) */
+  margin: 0 auto; /* выравнивание обертки по центру документа */
+  overflow: hidden; /* прячем линии за границами обертки, чтобы в случае изменения ширины экрана линии не выходили за ее пределы */
+
 }
 
 
+.header span {
+  // width: 100%;
+  position: relative;
+}
+
+.header span::before {
+  
+  display: block;
+/* делаем псевдоэлемент блоком для последующего работы с ним, как с простым div'ом */
+  width:1000px;                    /* устанавливаем ширину линию. Можно использовать произвольную ширину */
+  // width: 100%; /* устанавливаем ширину линию. Можно использовать произвольную ширину */
+  content: ''; /* позволяет вставлять генерируемое содержание в текст страницы, которое первоначально в тексте отсутствует */
+  position: absolute; /* абсолютное позиционирование для управления линиями */
+  border-bottom: 1px solid #000; /* бордер псевдо дива, т.е. сама линия */
+  top: 50%; /* позиционирование по вертикали */
+  right: 70px; /* позиционирование по горизонтали */
+}
+
+/* аналогичные стили для второго псевдоэлемента */
+
+.header span::after {
+  display: block;
+  // width: 500px;
+  width: 1000px;
+  content: '';
+  position: absolute;
+  border-bottom: 1px solid #000;
+  top: 50%;
+  left: 70px;
+}
 
 .contentAPI {
   display: grid;
   gap: 10px;
-  grid-template-columns:  1fr 2fr;
+  grid-template-columns: 1fr 2fr;
 
   justify-items: center;
   width: calc(100% - 2 * $border_width);
   // height: 100px;
 
-  border-width: $border_width;
-  border-color: $c600;
-  border-style: solid;
+
+  // border-width: $border_width;
+  // border-color: $c600;
+  // border-style: solid;
 }
 
 .descriptionAPI {
-  width: 100%;
-  height: 100%;
+  width: auto;
+  height: auto;
+  // width: 100%;
+  // height: 100%;
 
-  border-width: $border_width;
-  border-color: $c600;
-  border-style: solid;
+  
+  padding: 20px;
+
+  // border-width: $border_width;
+  // border-color: $c600;
+  // border-style: solid;
 }
-
 
 .parametersAPI {
   width: 100%;
   height: 100%;
 
-  border-width: $border_width;
-  border-color: $c600;
-  border-style: solid;
-}
-.oneParameterAPI {
-  width: 100%;
-  height: 20px;
 
-  border-width: $border_width;
-  border-color: $c600;
-  border-style: solid;
+  // border-width: $border_width;
+  // border-color: $c600;
+  // border-style: solid;
 }
