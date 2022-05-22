@@ -9,14 +9,31 @@ const ConfiguratorContainerAPI = (props) => {
     let description = props.API.description
 
 
+    // let ConfiguratorAPiItems = props.APIsOrderID.map((APiID) => {
+    //     return (
+    //         <ConfiguratorContainerAPI
+    //             API={props.APIs[APiID]}
+    //         />
+    //     )
+    // })
+
     // debugger
-    let ParameterItems = props.API.parameters.map((parameterObject) => {
+    let ParameterItems = props.API.parametersOrder.map((parameterID) => {
         return (
             <ParameterContainerAPI
-                parameterObject={parameterObject}
+                key={parameterID}
+                parameterObject={props.API.parameters[parameterID]}
             />
         )
     })
+    // // debugger
+    // let ParameterItems = props.API.parameters.map((parameterObject) => {
+    //     return (
+    //         <ParameterContainerAPI
+    //             parameterObject={parameterObject}
+    //         />
+    //     )
+    // })
 
     return (
         <div className={style.ConfiguratorContainerAPI}>
@@ -25,7 +42,7 @@ const ConfiguratorContainerAPI = (props) => {
                     <span>{title}</span>
                 </div>
                 <div>
-                    <span>{title} </span> 
+                    <span>{title} </span>
                     {/* <span>{title} </span> //TODO добавить завершено 0/3 */}
                 </div>
                 <div>

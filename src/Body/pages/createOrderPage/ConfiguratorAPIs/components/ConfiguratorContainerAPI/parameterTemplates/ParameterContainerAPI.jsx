@@ -16,11 +16,30 @@ const ParameterContainerAPI = (props) => {
     let selectElementType = () => {
         switch (type) {
             case 'time':
-                return (<InputFieldPTContainer />)
+                // <input id="dateRequired" type="date" name="dateRequired" />
+                return (<InputFieldPTContainer 
+                    key={parameter}
+                    input_type="date" 
+                    />)
             default:
                 return ('')
         }
     }
+
+    
+// type = {
+//     "select" : "выбор из выпадающего списка",
+//     "date": "Выбор даты",
+//     "time": "Выбор времени",
+//     "datetime": "Выбор даты и времени",
+//     "selectOne": "Выбор одного из [ O X O O O ]",
+//     "selectMany": "Выбор многих из [ O X O X O ]",
+//     "text": "Ввод текста",
+//     "number": "Ввод числа",
+// }
+
+
+
 
 
     return (

@@ -27,80 +27,109 @@ let initialState = {
             title: 'Погода',
             api: 'weatherAPI',
             description: "Позволяет собрать данные по погоде в разных городах",
-            parameters: [
-                {
+            parametersOrder: [
+                'start_time','end_time'
+            ],
+            parameters: {
+                'start_time':{
                     title_parameter: "Время начала",
                     parameter: "start_time",
                     type: "time",
                     description_parameters: 'Параметр отвечающий за начало выборки',
-                    value: '', // обновляет юзер
                 },
-                {
-                    title_parameter: "Время начала",
-                    parameter: "start_time",
+                'end_time':{
+                    title_parameter: "Время конца",
+                    parameter: "end_time",
                     type: "time",
                     description_parameters: 'Параметр отвечающий за конец выборки',
-                    value: '',
                 },
-            ]
+            }
         },
         '2': {
             id: '2',
             title: 'Погода',
             api: 'COVID_API',
             description: "Позволяет собрать данные по погоде в разных городах",
-            parameters: [
-                {
+            parametersOrder: [
+                'start_time','end_time'
+            ],
+            parameters: {
+                'start_time':{
                     title_parameter: "Время начала",
                     parameter: "start_time",
                     type: "time",
                     description_parameters: 'Параметр отвечающий за начало выборки',
                 },
-                {
-                    title_parameter: "Время начала",
-                    parameter: "start_time",
+                'end_time':{
+                    title_parameter: "Время конца",
+                    parameter: "end_time",
                     type: "time",
                     description_parameters: 'Параметр отвечающий за конец выборки',
                 },
-            ]
+            }
         },
         '3': {
             id: '3',
             title: 'Погода',
             api: 'COVID_API_2',
             description: "Позволяет собрать данные по погоде в разных городах",
-            parameters: [
-                {
+            parametersOrder: [
+                'start_time','end_time'
+            ],
+            parameters: {
+                'start_time':{
                     title_parameter: "Время начала",
                     parameter: "start_time",
                     type: "time",
                     description_parameters: 'Параметр отвечающий за начало выборки',
                 },
-                {
-                    title_parameter: "Время начала",
-                    parameter: "start_time",
+                'end_time':{
+                    title_parameter: "Время конца",
+                    parameter: "end_time",
                     type: "time",
                     description_parameters: 'Параметр отвечающий за конец выборки',
                 },
-            ]
-        },
+            }
+            // parametersOrder: [
+            //     '1','2'
+            // ],
+            // parameters: {
+            //     '1':{
+            //         title_parameter: "Время начала",
+            //         parameter: "start_time",
+            //         type: "time",
+            //         description_parameters: 'Параметр отвечающий за начало выборки',
+            //     },
+            //     '2':{
+            //         title_parameter: "Время начала",
+            //         parameter: "start_time",
+            //         type: "time",
+            //         description_parameters: 'Параметр отвечающий за конец выборки',
+            //     },
+            },
+
         '4': {
             id: '4',
             title: 'Погода',
             api: 'COVID_API_3',
             description: "Позволяет собрать данные по погоде в разных городах",
-            parameters: [
-                {
-                    "title_parameter": "Время начала",
-                    "parameter": "start_time",
-                    "type": "time"
+            parametersOrder: [
+                'start_time','end_time'
+            ],
+            parameters: {
+                'start_time':{
+                    title_parameter: "Время начала",
+                    parameter: "start_time",
+                    type: "time",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
                 },
-                {
-                    "title_parameter": "Время конца",
-                    "parameter": "start_time",
-                    "type": "time"
+                'end_time':{
+                    title_parameter: "Время конца",
+                    parameter: "end_time",
+                    type: "time",
+                    description_parameters: 'Параметр отвечающий за конец выборки',
                 },
-            ]
+            }
         },
     },
 

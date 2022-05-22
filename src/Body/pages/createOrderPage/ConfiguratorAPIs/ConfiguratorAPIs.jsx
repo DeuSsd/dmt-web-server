@@ -7,6 +7,7 @@ const ConfiguratorAPIs = (props) => {
     let ConfiguratorAPiItems = props.APIsOrderID.map((APiID) => {
         return (
             <ConfiguratorContainerAPI
+                key={APiID}
                 API={props.APIs[APiID]}
             />
         )
