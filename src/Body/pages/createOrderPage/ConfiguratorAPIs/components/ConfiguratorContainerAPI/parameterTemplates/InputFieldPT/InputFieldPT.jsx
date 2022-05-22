@@ -7,6 +7,7 @@ const InputFieldPT = (props) => {
     let onTextAreaValueChange = (e) => {
 
         let typeParameterAPI = props.typeParameterAPI;
+        // let typeParameterAPI = props.typeParameterAPI;
         let valueParameterAPI = e.target.value;
 
         props.updateAPIParameterInputAreaCreator(typeParameterAPI, valueParameterAPI);
@@ -22,13 +23,12 @@ const InputFieldPT = (props) => {
                 <input
                     onChange={onTextAreaValueChange}
                     value={props.value}
-                    // type={props.input_type}
+                    type={props.input_type}
                     placeholder={props.placeholder} />
             </div>
         </div>
     )
 }
-
 
 
 export default InputFieldPT;
