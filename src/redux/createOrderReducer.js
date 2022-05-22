@@ -28,7 +28,7 @@ let initialState = {
             api: 'weatherAPI',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time', 'end_time'
+                'start_time','locale','locales', 'end_time'
             ],
             parameters: {
                 'start_time': {
@@ -37,6 +37,21 @@ let initialState = {
                     type: "date",
                     description_parameters: 'Параметр отвечающий за начало выборки',
                     value: ''
+                },
+                'locales': {
+                    title_parameter: "Время начала",
+                    parameter: "locale",
+                    type: "text",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: ''
+                },
+                'locale': {
+                    title_parameter: "Время начала",
+                    parameter: "locale",
+                    type: "selectOne",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '',
+                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
                 },
                 'end_time': {
                     title_parameter: "Время конца",
@@ -280,7 +295,7 @@ let createOrderReducer = (state = initialState, action) => {
                 ...state.APIs[APiID].parameters[parameterAPI],
                 value: valueParameterAPI
             }
-            debugger
+            // debugger
             return copyState
         }
         default:
