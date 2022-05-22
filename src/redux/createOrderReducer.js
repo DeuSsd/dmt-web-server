@@ -1,6 +1,6 @@
 const DRAG_END_SELECTOR_API = 'DRAG_END_SELECTOR_API'
 const SELECT_PAGE = 'SELECT_PAGE'
-const INPUT_API_PARAMETER_TEXT_UPDATE = 'INPUT_API_PARAMETER_TEXT_UPDATE'
+const INPUT_API_PARAMETER_DATA_UPDATE = 'INPUT_API_PARAMETER_DATA_UPDATE'
 
 
 let initialState = {
@@ -19,7 +19,7 @@ let initialState = {
 
     SelectedPage: 'Выбор',
 
-    APIsOrderID: ['1','2','3','4'],
+    APIsOrderID: ['1', '2', '3', '4'],
 
     APIs: {
         '1': {
@@ -28,20 +28,22 @@ let initialState = {
             api: 'weatherAPI',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time','end_time'
+                'start_time', 'end_time'
             ],
             parameters: {
-                'start_time':{
+                'start_time': {
                     title_parameter: "Время начала",
                     parameter: "start_time",
-                    type: "time",
+                    type: "date",
                     description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: ''
                 },
-                'end_time':{
+                'end_time': {
                     title_parameter: "Время конца",
                     parameter: "end_time",
-                    type: "time",
+                    type: "date",
                     description_parameters: 'Параметр отвечающий за конец выборки',
+                    value: ''
                 },
             }
         },
@@ -51,20 +53,22 @@ let initialState = {
             api: 'COVID_API',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time','end_time'
+                'start_time', 'end_time'
             ],
             parameters: {
-                'start_time':{
+                'start_time': {
                     title_parameter: "Время начала",
                     parameter: "start_time",
-                    type: "time",
+                    type: "date",
                     description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: ''
                 },
-                'end_time':{
+                'end_time': {
                     title_parameter: "Время конца",
                     parameter: "end_time",
-                    type: "time",
+                    type: "date",
                     description_parameters: 'Параметр отвечающий за конец выборки',
+                    value: ''
                 },
             }
         },
@@ -74,20 +78,22 @@ let initialState = {
             api: 'COVID_API_2',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time','end_time'
+                'start_time', 'end_time'
             ],
             parameters: {
-                'start_time':{
+                'start_time': {
                     title_parameter: "Время начала",
                     parameter: "start_time",
-                    type: "time",
+                    type: "date",
                     description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: ''
                 },
-                'end_time':{
+                'end_time': {
                     title_parameter: "Время конца",
                     parameter: "end_time",
-                    type: "time",
+                    type: "date",
                     description_parameters: 'Параметр отвечающий за конец выборки',
+                    value: ''
                 },
             }
             // parametersOrder: [
@@ -106,7 +112,7 @@ let initialState = {
             //         type: "time",
             //         description_parameters: 'Параметр отвечающий за конец выборки',
             //     },
-            },
+        },
 
         '4': {
             id: '4',
@@ -114,20 +120,22 @@ let initialState = {
             api: 'COVID_API_3',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time','end_time'
+                'start_time', 'end_time'
             ],
             parameters: {
-                'start_time':{
+                'start_time': {
                     title_parameter: "Время начала",
                     parameter: "start_time",
-                    type: "time",
+                    type: "date",
                     description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: ''
                 },
-                'end_time':{
+                'end_time': {
                     title_parameter: "Время конца",
                     parameter: "end_time",
-                    type: "time",
+                    type: "date",
                     description_parameters: 'Параметр отвечающий за конец выборки',
+                    value: ''
                 },
             }
         },
@@ -258,12 +266,23 @@ let createOrderReducer = (state = initialState, action) => {
         //         login: action.body
         //     }
         // }
-        // case INPUT_PASSWORD_TEXT_UPDATE: {
-        //     return {
-        //         ...state,
-        //         password: action.body
-        //     }
-        // }
+        case INPUT_API_PARAMETER_DATA_UPDATE: {
+            copyState = {
+                ...state,
+                APIs: {...state.APIs}
+            }
+            let APiID = action.APiID
+            let parameterAPI = action.parameterAPI
+            let valueParameterAPI = action.valueParameterAPI
+
+            copyState.APIs[APiID] = { ...state.APIs[APiID] }
+            copyState.APIs[APiID].parameters[parameterAPI] = {
+                ...state.APIs[APiID].parameters[parameterAPI],
+                value: valueParameterAPI
+            }
+            debugger
+            return copyState
+        }
         default:
             return state
     }
@@ -271,11 +290,13 @@ let createOrderReducer = (state = initialState, action) => {
 
 
 
-export const updateAPIParameterInputAreaCreator = (typeParameterAPI, valueParameterAPI) => (
-    { type: INPUT_API_PARAMETER_TEXT_UPDATE, 
-        typeParameterAPI: typeParameterAPI,
-        valueParameterAPI:valueParameterAPI
- })
+export const updateAPIParameterInputAreaCreator = (APiID, parameterAPI, valueParameterAPI) => (
+    {
+        type: INPUT_API_PARAMETER_DATA_UPDATE,
+        APiID: APiID,
+        parameterAPI: parameterAPI,
+        valueParameterAPI: valueParameterAPI
+    })
 // export const updatePasswordTextAreaCreator = (body) => ({ type: INPUT_PASSWORD_TEXT_UPDATE, body: body })
 
 

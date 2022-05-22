@@ -11,14 +11,16 @@ const ParameterContainerAPI = (props) => {
     const description = props.parameterObject.description_parameters;
     const type = props.parameterObject.type;
     // value: ''
-
-
+    let value = props.parameterObject.value;
     let selectElementType = () => {
+        // debugger
         switch (type) {
-            case 'time':
-                // <input id="dateRequired" type="date" name="dateRequired" />
+            case 'date':
                 return (<InputFieldPTContainer 
+                    parameterAPI={parameter}
+                    APiID = {props.APiID}
                     key={parameter}
+                    value={value}
                     input_type="date" 
                     />)
             default:
@@ -26,7 +28,8 @@ const ParameterContainerAPI = (props) => {
         }
     }
 
-    
+    // <input id="dateRequired" type="date" name="dateRequired" />
+
 // type = {
 //     "select" : "выбор из выпадающего списка",
 //     "date": "Выбор даты",

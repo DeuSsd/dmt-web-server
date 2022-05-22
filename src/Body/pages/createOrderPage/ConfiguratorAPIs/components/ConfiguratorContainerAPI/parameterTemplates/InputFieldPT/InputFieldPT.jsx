@@ -5,14 +5,15 @@ import style from "./InputFieldPT.module.scss"
 const InputFieldPT = (props) => {
 
     let onTextAreaValueChange = (e) => {
-
-        let typeParameterAPI = props.typeParameterAPI;
+        let APiID = props.APiID
+        let parameterAPI = props.parameterAPI;
         // let typeParameterAPI = props.typeParameterAPI;
         let valueParameterAPI = e.target.value;
-
-        props.updateAPIParameterInputAreaCreator(typeParameterAPI, valueParameterAPI);
+        debugger
+        props.updateAPIParameterInputAreaCreator(APiID,parameterAPI, valueParameterAPI);
     }
 
+    // debugger
     console.log(props.value)
     return (
         <div className={style.InputData}>

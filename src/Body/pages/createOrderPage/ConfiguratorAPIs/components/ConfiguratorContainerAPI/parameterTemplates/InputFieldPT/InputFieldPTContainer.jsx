@@ -18,8 +18,8 @@ const mapDispatchToProps = (dispatch) => {
         // onSignUnClick: () => { dispatch(signUpCreator()) },
         // updateLoginTextArea: (body) => { dispatch(updateLoginTextAreaCreator(body)) },
         updateAPIParameterInputAreaCreator:
-         (typeParameterAPI, valueParameterAPI) => 
-         {dispatch(updateAPIParameterInputAreaCreator(typeParameterAPI, valueParameterAPI))}
+         (APiID,typeParameterAPI, valueParameterAPI) => 
+         {dispatch(updateAPIParameterInputAreaCreator(APiID,typeParameterAPI, valueParameterAPI))}
     }
 }
 

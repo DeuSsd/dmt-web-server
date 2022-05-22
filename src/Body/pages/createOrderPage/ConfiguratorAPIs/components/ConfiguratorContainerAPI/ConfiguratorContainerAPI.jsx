@@ -21,6 +21,7 @@ const ConfiguratorContainerAPI = (props) => {
     let ParameterItems = props.API.parametersOrder.map((parameterID) => {
         return (
             <ParameterContainerAPI
+                APiID={props.APiID}
                 key={parameterID}
                 parameterObject={props.API.parameters[parameterID]}
             />
