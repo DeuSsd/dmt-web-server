@@ -1,6 +1,7 @@
 import React from "react";
 import style from "./ParameterContainerAPI.module.scss"
 import InputFieldPTContainer from "./InputFieldPT/InputFieldPTContainer";
+import SelectorFieldPTContainer from "./SelectorFieldPT/SelectorFieldPTContainer";
 
 
 
@@ -10,6 +11,8 @@ const ParameterContainerAPI = (props) => {
     const parameter = props.parameterObject.parameter;
     const description = props.parameterObject.description_parameters;
     const type = props.parameterObject.type;
+    const data = props.parameterObject.data;
+    // debugger
     // value: ''
     let value = props.parameterObject.value;
     let selectElementType = () => {
@@ -21,8 +24,26 @@ const ParameterContainerAPI = (props) => {
                     APiID = {props.APiID}
                     key={parameter}
                     value={value}
-                    input_type="date" 
+                    input_type={type}
                     />)
+            case 'text':
+                return (<InputFieldPTContainer 
+                    parameterAPI={parameter}
+                    APiID = {props.APiID}
+                    key={parameter}
+                    value={value}
+                    input_type={type} 
+                    />)
+            case 'selectOne':
+                return (<SelectorFieldPTContainer 
+                    parameterAPI={parameter}
+                    APiID = {props.APiID}
+                    key={parameter}
+                    value={value}
+                    input_type={'radio'}
+                    data={data}
+                    />)
+                    
             default:
                 return ('')
         }

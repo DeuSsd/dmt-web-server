@@ -7,9 +7,8 @@ const InputFieldPT = (props) => {
     let onTextAreaValueChange = (e) => {
         let APiID = props.APiID
         let parameterAPI = props.parameterAPI;
-        // let typeParameterAPI = props.typeParameterAPI;
         let valueParameterAPI = e.target.value;
-        debugger
+        // debugger
         props.updateAPIParameterInputAreaCreator(APiID,parameterAPI, valueParameterAPI);
     }
 

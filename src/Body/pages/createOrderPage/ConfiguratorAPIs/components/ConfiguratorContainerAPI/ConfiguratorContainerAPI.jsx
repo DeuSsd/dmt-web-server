@@ -7,8 +7,6 @@ import ParameterContainerAPI from "./parameterTemplates/ParameterContainerAPI";
 const ConfiguratorContainerAPI = (props) => {
     let title = props.API.title
     let description = props.API.description
-
-
     // let ConfiguratorAPiItems = props.APIsOrderID.map((APiID) => {
     //     return (
     //         <ConfiguratorContainerAPI
