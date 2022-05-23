@@ -5,6 +5,7 @@ const SIGN_IN = 'SIGN_IN'
 const SIGN_UP = 'SIGN_UP'
 
 const LOG_OUT = 'LOG_OUT'
+// const GET_FILE = 'GET_FILE'
 
 const INPUT_LOGIN_TEXT_UPDATE = 'INPUT_LOGIN_TEXT_UPDATE'
 const INPUT_PASSWORD_TEXT_UPDATE = 'INPUT_PASSWORD_TEXT_UPDATE'
@@ -33,7 +34,7 @@ let authorizationReducer = (state = initialState, action) => {
             return copyState
         }
         case LOG_OUT: {
-            debugger
+            // debugger
             return {
                 ...state,
                 'token': '',
@@ -45,9 +46,15 @@ let authorizationReducer = (state = initialState, action) => {
             }
         }
         case SIGN_UP: {
-            UserService.getPublicContent(state)
+            // debugger
+            UserService.getResultFile(state)
+            // debugger
             return state
         }
+        // case GET_FILE: {
+        //     UserService.getPublicContent(state)
+        //     return state
+        // }
         case INPUT_LOGIN_TEXT_UPDATE: {
             return {
                 ...state,
@@ -68,6 +75,7 @@ let authorizationReducer = (state = initialState, action) => {
 export const signInCreator = () => ({ type: SIGN_IN })
 export const signUpCreator = () => ({ type: SIGN_UP })
 export const logOutCreator = () => ({ type: LOG_OUT })
+// export const getFileCreator = () => ({ type: GET_FILE })
 
 export const updateLoginTextAreaCreator = (body) => ({ type: INPUT_LOGIN_TEXT_UPDATE, body: body })
 export const updatePasswordTextAreaCreator = (body) => ({ type: INPUT_PASSWORD_TEXT_UPDATE, body: body })

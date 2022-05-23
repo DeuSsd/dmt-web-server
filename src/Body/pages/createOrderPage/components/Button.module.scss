@@ -1,0 +1,30 @@
+@import "../../src/scss/colors.scss";
+
+.Button button{
+
+    width: 150px;
+    height: 80px;
+    border-radius: 10px;
+    
+    border: none;
+    box-shadow: none;
+    
+    
+
+
+    font-family: $font_family;
+    font-size: $font_size_h1;
+
+
+    background-color: $c200;
+}
+
+
+
+.Button button:hover{
+    background-color: $c300;
+}
+
+.Button button:active{
+    background-color: $c600;
+}

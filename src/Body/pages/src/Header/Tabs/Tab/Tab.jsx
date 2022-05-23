@@ -1,10 +1,10 @@
 import React from "react";
-import { NavLink, useLocation } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 import style from "./Tab.module.scss";
 
 
 const Tab = (props) => {
-    let pathnameLocation = `${style.Tab} ${props.selectedPage === props.tabItem ? style.selected : ''}`
+    // let pathnameLocation = `${style.Tab} ${props.selectedPage === props.tabItem ? style.selected : ''}`
     // debugger
     // ${props.selectedPage === props.item ? style.selected : ''}`
     return (

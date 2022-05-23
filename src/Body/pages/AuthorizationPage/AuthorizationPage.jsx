@@ -49,6 +49,7 @@ const AuthorizationPage = (props) => {
 
 
                 <Button
+                    // actionOnClick={props.onSignUpClick}
                     actionOnClick={props.onSignUpClick}
                     text="Sign Up"
                 />

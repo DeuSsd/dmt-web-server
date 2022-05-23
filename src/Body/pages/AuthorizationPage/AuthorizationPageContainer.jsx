@@ -15,9 +15,10 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onSignInClick: () => { dispatch(signInCreator()) },
-        onSignUnClick: () => { dispatch(signUpCreator()) },
+        onSignUpClick: () => { dispatch(signUpCreator()) },
         updateLoginTextArea: (body) => { dispatch(updateLoginTextAreaCreator(body)) },
-        updatePasswordTextArea: (body) => { dispatch(updatePasswordTextAreaCreator(body)) }
+        updatePasswordTextArea: (body) => { dispatch(updatePasswordTextAreaCreator(body)) },
+        // getFile: () => {UserService.getResultFile()}
     }
 }
 
