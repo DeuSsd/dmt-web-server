@@ -36,21 +36,21 @@ let initialState = {
                     parameter: "start_time",
                     type: "date",
                     description_parameters: 'Параметр отвечающий за начало выборки',
-                    value: ''
+                    value: '2022-05-04'
                 },
                 'locales': {
                     title_parameter: "Время начала",
-                    parameter: "locale",
+                    parameter: "locales",
                     type: "text",
                     description_parameters: 'Параметр отвечающий за начало выборки',
-                    value: ''
+                    value: '2022-05-04'
                 },
                 'locale': {
                     title_parameter: "Время начала",
                     parameter: "locale",
                     type: "selectOne",
                     description_parameters: 'Параметр отвечающий за начало выборки',
-                    value: '',
+                    value: 'Калининград',
                     data: ['Калининград','Санкт-Петербург','Москва','Харовск']
                 },
                 'end_time': {
@@ -58,7 +58,7 @@ let initialState = {
                     parameter: "end_time",
                     type: "date",
                     description_parameters: 'Параметр отвечающий за конец выборки',
-                    value: ''
+                    value: '2022-05-04'
                 },
             }
         },
@@ -68,7 +68,7 @@ let initialState = {
             api: 'COVID_API',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time', 'end_time'
+                'start_time','locale','locales', 'end_time'
             ],
             parameters: {
                 'start_time': {
@@ -76,14 +76,29 @@ let initialState = {
                     parameter: "start_time",
                     type: "date",
                     description_parameters: 'Параметр отвечающий за начало выборки',
-                    value: ''
+                    value: '2022-05-04'
+                },
+                'locales': {
+                    title_parameter: "Время начала",
+                    parameter: "locales",
+                    type: "text",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '2022-05-04'
+                },
+                'locale': {
+                    title_parameter: "Время начала",
+                    parameter: "locale",
+                    type: "selectOne",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: 'Калининград',
+                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
                 },
                 'end_time': {
                     title_parameter: "Время конца",
                     parameter: "end_time",
                     type: "date",
                     description_parameters: 'Параметр отвечающий за конец выборки',
-                    value: ''
+                    value: '2022-05-04'
                 },
             }
         },
@@ -93,7 +108,7 @@ let initialState = {
             api: 'COVID_API_2',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time', 'end_time'
+                'start_time','locale','locales', 'end_time'
             ],
             parameters: {
                 'start_time': {
@@ -101,14 +116,29 @@ let initialState = {
                     parameter: "start_time",
                     type: "date",
                     description_parameters: 'Параметр отвечающий за начало выборки',
-                    value: ''
+                    value: '2022-05-04'
+                },
+                'locales': {
+                    title_parameter: "Время начала",
+                    parameter: "locales",
+                    type: "text",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '2022-05-04'
+                },
+                'locale': {
+                    title_parameter: "Время начала",
+                    parameter: "locale",
+                    type: "selectOne",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: 'Калининград',
+                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
                 },
                 'end_time': {
                     title_parameter: "Время конца",
                     parameter: "end_time",
                     type: "date",
                     description_parameters: 'Параметр отвечающий за конец выборки',
-                    value: ''
+                    value: '2022-05-04'
                 },
             }
             // parametersOrder: [
@@ -135,7 +165,7 @@ let initialState = {
             api: 'COVID_API_3',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time', 'end_time'
+                'start_time','locale','locales', 'end_time'
             ],
             parameters: {
                 'start_time': {
@@ -143,14 +173,29 @@ let initialState = {
                     parameter: "start_time",
                     type: "date",
                     description_parameters: 'Параметр отвечающий за начало выборки',
-                    value: ''
+                    value: '2022-05-04'
+                },
+                'locales': {
+                    title_parameter: "Время начала",
+                    parameter: "locales",
+                    type: "text",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '2022-05-04'
+                },
+                'locale': {
+                    title_parameter: "Время начала",
+                    parameter: "locale",
+                    type: "selectOne",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: 'Калининград',
+                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
                 },
                 'end_time': {
                     title_parameter: "Время конца",
                     parameter: "end_time",
                     type: "date",
                     description_parameters: 'Параметр отвечающий за конец выборки',
-                    value: ''
+                    value: '2022-05-04'
                 },
             }
         },
@@ -289,13 +334,14 @@ let createOrderReducer = (state = initialState, action) => {
             let APiID = action.APiID
             let parameterAPI = action.parameterAPI
             let valueParameterAPI = action.valueParameterAPI
-
+            debugger
             copyState.APIs[APiID] = { ...state.APIs[APiID] }
             copyState.APIs[APiID].parameters[parameterAPI] = {
                 ...state.APIs[APiID].parameters[parameterAPI],
+                // value: 'valueParameterAPI'
                 value: valueParameterAPI
             }
-            // debugger
+            debugger
             return copyState
         }
         default:

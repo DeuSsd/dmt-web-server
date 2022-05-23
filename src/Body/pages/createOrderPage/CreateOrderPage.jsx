@@ -4,6 +4,7 @@ import HeaderContainer from "../src/Header/HeaderContainer";
 import APIsGridContainer from "./APIsGrid/APIsGridContainer";
 import { Route, Routes } from "react-router-dom";
 import ConfiguratorAPIsContainer from "./ConfiguratorAPIs/ConfiguratorAPIsContainer";
+import ConfiguratorPreviewAPIsContainer from "./ConfiguratorPreviewAPIs/ConfiguratorPreviewAPIsContainer";
 
 
 
@@ -31,7 +32,7 @@ const CreateOrderPage = (props) => {
                     />
                     <Route
                         path={props.tabLinks['Предпросмотр']}
-                        element={<div>Предпросмотр</div>}
+                        element={<ConfiguratorPreviewAPIsContainer />}
                     />
                     <Route
                         path={props.tabLinks['Заказ']}

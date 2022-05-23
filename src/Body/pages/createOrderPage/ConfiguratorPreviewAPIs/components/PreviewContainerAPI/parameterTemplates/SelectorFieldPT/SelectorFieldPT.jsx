@@ -4,19 +4,17 @@ import style from "./SelectorFieldPT.module.scss"
 
 
 const SelectorFieldPT = (props) => {
-    // const [selectedOption, setSelectedOption] = useState(props.value);
-    const [selectedOption, setSelectedOption] = useState({value: props.value, label: props.value});
-
+    const [selectedOption, setSelectedOption] = useState(props.value);
     // debugger
 
     
     let onTextAreaValueChange = (newSelected) => {
-        debugger
-        setSelectedOption(newSelected)
+
+        setSelectedOption(newSelected.value)
 
         let APiID = props.APiID
         let parameterAPI = props.parameterAPI;
-        let valueParameterAPI = selectedOption.value;
+        let valueParameterAPI = selectedOption;
         // debugger
         props.updateAPIParameterInputAreaCreator(APiID,parameterAPI, valueParameterAPI);
 
@@ -26,7 +24,7 @@ const SelectorFieldPT = (props) => {
 
 
 
-    debugger
+    // debugger
     console.log(props.value)
     return (
         <div className={style.InputData}>
@@ -41,7 +39,7 @@ const SelectorFieldPT = (props) => {
                     placeholder={props.placeholder} /> */}
                 <Select 
                     options={options}
-                    value={selectedOption}
+                    value={{value: selectedOption, label: selectedOption}}
                     onChange={onTextAreaValueChange}
                 />
 

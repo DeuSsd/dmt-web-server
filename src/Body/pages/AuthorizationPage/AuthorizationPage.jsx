@@ -40,7 +40,7 @@ const AuthorizationPage = (props) => {
                 // exact={true}
                 >
                     <Button
-                        actionOnClick={props.onLogInClick}
+                        actionOnClick={props.onSignInClick}
                         text="Sign In"
                     />
 
@@ -49,7 +49,7 @@ const AuthorizationPage = (props) => {
 
 
                 <Button
-                    actionOnClick={props.onSignInClick}
+                    actionOnClick={props.onSignUpClick}
                     text="Sign Up"
                 />
                 {/* <NavLink
