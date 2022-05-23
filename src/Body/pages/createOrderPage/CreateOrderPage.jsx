@@ -23,14 +23,21 @@ const CreateOrderPage = (props) => {
                     <Route
                         path={props.tabLinks[CHOICE_TAB]}
                         element={
-                            <APIsGridContainer />
+                            <APIsGridContainer
+                                // SelectedTab={CHOICE_TAB}
+                                // pathLinkPrevious={props.pathnameLocation + props.tabLinks[CONFIGURATION_TAB]}
+                                // PreviousTab={CONFIGURATION_TAB}
+                                pathLinkNext={props.pathnameLocation + props.tabLinks[CONFIGURATION_TAB]}
+                                NextTab={CONFIGURATION_TAB}
+
+                            />
                         }
                     />
                     <Route
                         path={props.tabLinks[CONFIGURATION_TAB]}
                         element={
                             <ConfiguratorAPIsContainer
-                                SelectedTab={CONFIGURATION_TAB}
+                                // SelectedTab={CONFIGURATION_TAB}
                                 pathLinkPrevious={props.pathnameLocation + props.tabLinks[CHOICE_TAB]}
                                 PreviousTab={CHOICE_TAB}
                                 pathLinkNext={props.pathnameLocation + props.tabLinks[PREVIEW_TAB]}
@@ -41,7 +48,7 @@ const CreateOrderPage = (props) => {
                     <Route
                         path={props.tabLinks[PREVIEW_TAB]}
                         element={<ConfiguratorPreviewAPIsContainer
-                            SelectedTab={PREVIEW_TAB}
+                            // SelectedTab={PREVIEW_TAB}
                             pathLinkPrevious={props.pathnameLocation + props.tabLinks[CONFIGURATION_TAB]}
                             PreviousTab={CONFIGURATION_TAB}
                             pathLinkNext={props.pathnameLocation + props.tabLinks[OPDER_TAB]}

@@ -14,11 +14,6 @@ const NavigationPanel = (props) => {
             </div>
             <div className={style.NavigationButtons}>
                 <Button
-                    pathLink={props.pathLinkPrevious}
-                    // actionOnClick={props.onSignUpClick}
-                    text="Назад"
-                />
-                <Button
                     pathLink={props.pathLinkNext}
                     // actionOnClick={props.onSignUpClick}
                     text="Далее"

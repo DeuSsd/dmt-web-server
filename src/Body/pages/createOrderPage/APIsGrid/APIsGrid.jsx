@@ -3,12 +3,14 @@ import { Droppable } from "react-beautiful-dnd";
 import { DragDropContext } from "react-beautiful-dnd";
 import style from "./APIsGrid.module.scss"
 import APIsContainer from "./components/APIsContainer/APIsContainer";
+import NavigationPanelContainer from "./components/Navigation/NavigationPanelContainer";
 
 const APIsGrid = (props) => {
     // debugger
     let APIsColumnsItems = props.APIsColumnsOrder.map((APiColumn, index) => {
         // debugger
         return (
+
             <Droppable droppableId={props.APIsColumns[APiColumn].id}>
                 {(provided) => (
                     <APIsContainer
@@ -22,27 +24,35 @@ const APIsGrid = (props) => {
                     </APIsContainer>
                 )}
             </Droppable>
+
+
         )
     })
-
-
 
 
 
     // debugger
     return (
 
-         
 
-        <DragDropContext
-            onDragEnd={props.onDragEnd}
-        >
-            <div
-                className={style.APIsGrid}>
-                {APIsColumnsItems}
-            </div>
-        </DragDropContext>
+        <div>
+            <NavigationPanelContainer
+                // pathLinkPrevious={props.pathLinkPrevious}
+                pathLinkNext={props.pathLinkNext}
+                // PreviousTab={props.PreviousTab}
+                // SelectedTab={props.SelectedTab}
+                NextTab={props.NextTab}
+            />
 
+            <DragDropContext
+                onDragEnd={props.onDragEnd}
+            >
+                <div
+                    className={style.APIsGrid}>
+                    {APIsColumnsItems}
+                </div>
+            </DragDropContext>
+        </div>
     )
 }
 

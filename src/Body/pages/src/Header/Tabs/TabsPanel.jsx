@@ -8,13 +8,13 @@ const TabsPanel = (props) => {
 
     let tabsElements = props.tabPages.map(
         tabItem =>
-            <Tab 
-            onTabPageClickCreator={props.onTabPageClickCreator}
-            selectedPage={props.selectedPage}
-            pathnameLocation={props.pathnameLocation}
-             tabItem={tabItem} 
-             tabLink={props.tabLinks[tabItem]}
-              />
+            <Tab
+                onTabPageClickCreator={props.onTabPageClickCreator}
+                selectedPage={props.selectedPage}
+                pathnameLocation={props.pathnameLocation}
+                tabItem={tabItem}
+                tabLink={props.tabLinks[tabItem]}
+            />
     )
 
 

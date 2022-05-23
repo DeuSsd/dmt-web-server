@@ -22,7 +22,7 @@ const ConfiguratorAPIs = (props) => {
                 pathLinkPrevious={props.pathLinkPrevious}
                 pathLinkNext={props.pathLinkNext}
                 PreviousTab={props.PreviousTab}
-                SelectedTab={props.SelectedTab}
+                // SelectedTab={props.SelectedTab}
                 NextTab={props.NextTab}
             />
             <div className={style.ConfiguratorAPIs}>
@@ -32,7 +32,7 @@ const ConfiguratorAPIs = (props) => {
                 pathLinkPrevious={props.pathLinkPrevious}
                 pathLinkNext={props.pathLinkNext}
                 PreviousTab={props.PreviousTab}
-                SelectedTab={props.SelectedTab}
+                // SelectedTab={props.SelectedTab}
                 NextTab={props.NextTab}
             />
         </div>

@@ -1,4 +1,5 @@
 import React from "react";
+import NavigationPanelContainer from "./components/Navigation/NavigationPanelContainer";
 import PreviewContainerAPI from "./components/PreviewContainerAPI/PreviewContainerAPI";
 // import ConfiguratorContainerAPI from "../ConfiguratorAPIs/components/ConfiguratorContainerAPI/ConfiguratorContainerAPI";
 import style from "./ConfiguratorPreviewAPIs.module.scss"
@@ -18,11 +19,27 @@ const ConfiguratorPreviewAPIs = (props) => {
     // debugger
     return (
         <div>
+            <NavigationPanelContainer
+                pathLinkPrevious={props.pathLinkPrevious}
+                pathLinkNext={props.pathLinkNext}
+                PreviousTab={props.PreviousTab}
+                // SelectedTab={props.SelectedTab}
+                NextTab={props.NextTab}
+            />
             <div
                 className={style.ConfiguratorPreviewAPIs}>
                 {ConfiguratorAPiItems}
-                {/* dsd */}
             </div>
+            <NavigationPanelContainer
+                pathLinkPrevious={props.pathLinkPrevious}
+                pathLinkNext={props.pathLinkNext}
+                PreviousTab={props.PreviousTab}
+                // SelectedTab={props.SelectedTab}
+                NextTab={props.NextTab}
+            />
+
+
+
         </div>
     )
 }
