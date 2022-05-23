@@ -15,7 +15,7 @@ const NavigationPanel = (props) => {
             <div className={style.NavigationButtons}>
                 <Button
                     pathLink={props.pathLinkNext}
-                    // actionOnClick={props.onSignUpClick}
+                    actionOnClick={props.onCangeTabCrator}
                     text="Далее"
                 />
             </div>

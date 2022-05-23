@@ -15,7 +15,7 @@ const ConfiguratorPreviewAPIs = (props) => {
             />
         )
     })
-
+    
     // debugger
     return (
         <div>
@@ -37,9 +37,6 @@ const ConfiguratorPreviewAPIs = (props) => {
                 // SelectedTab={props.SelectedTab}
                 NextTab={props.NextTab}
             />
-
-
-
         </div>
     )
 }

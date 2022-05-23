@@ -15,7 +15,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onTabPageClickCreator: tab => dispatch(onTabPageClickCreator(tab)),
+       
+        onCangeTabCrator: tab => dispatch(onTabPageClickCreator(tab)),
     }
 }
 

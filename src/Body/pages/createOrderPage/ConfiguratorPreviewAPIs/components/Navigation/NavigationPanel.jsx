@@ -13,10 +13,10 @@ const NavigationPanel = (props) => {
 
 
     const SwitchToPreviousTab = () => {
-        return props.onTabPageClickCreator(props.PreviousTab)
+        return props.onCangeTabCrator(props.PreviousTab)
     }
     const SwitchToNextTab = () => {
-        props.onTabPageClickCreator(props.NextTab)
+        props.onCangeTabCrator(props.NextTab)
     }
 
     return (

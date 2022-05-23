@@ -1,3 +1,6 @@
+// import store from "./reduxState"
+// import APiService from "./services/api.service"
+
 const DRAG_END_SELECTOR_API = 'DRAG_END_SELECTOR_API'
 const SELECT_PAGE = 'SELECT_PAGE'
 const INPUT_API_PARAMETER_DATA_UPDATE = 'INPUT_API_PARAMETER_DATA_UPDATE'
@@ -250,8 +253,15 @@ let createOrderReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
-        case SELECT_PAGE:
+        // case LOAD_ALL_APIS:
+            // APiService.getAllAPIs(state.)
 
+
+        case SELECT_PAGE:
+            // let ss = store.getState()
+            debugger
+            let sss = action.getToken()
+            debugger
             // debugger
             return {
                 ...state,

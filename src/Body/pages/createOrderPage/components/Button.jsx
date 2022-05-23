@@ -5,6 +5,11 @@ import style from "./Button.module.scss";
 
 
 const Button = (props) => {
+    let action = () => {
+        debugger
+        props.actionOnClick()
+    }
+    // debugger
     return (
 
         <NavLink
@@ -15,8 +20,10 @@ const Button = (props) => {
             actionOnClick={props.onSignInClick}
             text="Sign In"
         /> */}
+
+
             <div className={style.Button}>
-                <button onClick={() => { props.actionOnClick() }}>
+                <button onClick={action}>
                     {props.text}
                 </button>
             </div>

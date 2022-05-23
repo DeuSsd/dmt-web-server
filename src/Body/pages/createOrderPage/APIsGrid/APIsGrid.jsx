@@ -10,7 +10,6 @@ const APIsGrid = (props) => {
     let APIsColumnsItems = props.APIsColumnsOrder.map((APiColumn, index) => {
         // debugger
         return (
-
             <Droppable droppableId={props.APIsColumns[APiColumn].id}>
                 {(provided) => (
                     <APIsContainer
@@ -24,11 +23,8 @@ const APIsGrid = (props) => {
                     </APIsContainer>
                 )}
             </Droppable>
-
-
         )
     })
-
 
 
     // debugger

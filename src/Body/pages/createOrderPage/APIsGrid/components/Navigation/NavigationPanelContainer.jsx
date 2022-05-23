@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { onTabPageClickCreator } from "../../../../../../redux/createOrderReducer";
 import NavigationPanel from "./NavigationPanel";
 
 
@@ -11,7 +12,7 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // onDragEnd: (result) => { dispatch(onDragEndCreator(result)) },
+        onCangeTabCrator: tab => dispatch(onTabPageClickCreator(tab)),
     }
 }
 
