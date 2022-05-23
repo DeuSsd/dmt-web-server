@@ -2,6 +2,7 @@ import React from "react";
 import style from "./AuthorizationPage.module.scss";
 import Button from "../src/components/Button";
 import InputData from "../src/components/InputData";
+import { NavLink } from "react-router-dom";
 
 
 const AuthorizationPage = (props) => {
@@ -31,14 +32,31 @@ const AuthorizationPage = (props) => {
                 />
             </div>
             <div className={`${style.Button__place}`}>
+
+                < NavLink
+                    to={`${props.pathnameLocation}/api-choose`}
+                    // activeClassName={style.selected}
+                    className={style.link}
+                // exact={true}
+                >
+                    <Button
+                        actionOnClick={props.onSignInClick}
+                        text="Sign In"
+                    />
+
+
+                </ NavLink>
+
+
                 <Button
-                    actionOnClick={props.onLogInClick}
-                    text="Sign In"
-                />
-                <Button
-                    actionOnClick={props.onSignInClick}
+                    actionOnClick={props.onSignUpClick}
                     text="Sign Up"
                 />
+                {/* <NavLink
+                    to={`/apiselector/api-choose`}
+                >
+                    CHOOSE
+                </NavLink> */}
             </div>
         </div>
     )

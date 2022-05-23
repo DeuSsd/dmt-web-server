@@ -1,6 +1,6 @@
 import { connect } from "react-redux";
 
-import { logInCreator, signInCreator, updateLoginTextAreaCreator, updatePasswordTextAreaCreator } from "../../../redux/authorizationReducer";
+import { signInCreator, signUpCreator, updateLoginTextAreaCreator, updatePasswordTextAreaCreator } from "../../../redux/authorizationReducer";
 
 import AuthorizationPage from "./AuthorizationPage";
 
@@ -14,8 +14,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onLogInClick: () => { dispatch(logInCreator()) },
         onSignInClick: () => { dispatch(signInCreator()) },
+        onSignUnClick: () => { dispatch(signUpCreator()) },
         updateLoginTextArea: (body) => { dispatch(updateLoginTextAreaCreator(body)) },
         updatePasswordTextArea: (body) => { dispatch(updatePasswordTextAreaCreator(body)) }
     }

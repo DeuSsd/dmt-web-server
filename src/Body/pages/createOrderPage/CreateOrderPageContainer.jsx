@@ -4,12 +4,13 @@ import CreateOrderPage from "./CreateOrderPage";
 
 const mapStateToProps = (state) => {
     return {
-        userName: state.authorization.name,
+        tabLinks: state.createOrderPage.TabLinks
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        
     }
 }
 

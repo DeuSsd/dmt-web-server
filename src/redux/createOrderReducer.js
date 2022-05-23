@@ -1,88 +1,221 @@
 const DRAG_END_SELECTOR_API = 'DRAG_END_SELECTOR_API'
+const SELECT_PAGE = 'SELECT_PAGE'
+const INPUT_API_PARAMETER_DATA_UPDATE = 'INPUT_API_PARAMETER_DATA_UPDATE'
+
 
 let initialState = {
+    Pages: [
+        'Выбор',
+        'Конфигурирование',
+        'Предпросмотр',
+        'Заказ'],
+
+    TabLinks: {
+        'Выбор': '/api-choose',
+        'Конфигурирование': '/api-configure',
+        'Предпросмотр': '/api-preview',
+        'Заказ': '/api-order'
+    },
+
+    SelectedPage: 'Выбор',
+
+    APIsOrderID: ['1', '2', '3', '4'],
+
     APIs: {
         '1': {
             id: '1',
             title: 'Погода',
             api: 'weatherAPI',
-            parameters: []
+            description: "Позволяет собрать данные по погоде в разных городах",
+            parametersOrder: [
+                'start_time','locale','locales', 'end_time'
+            ],
+            parameters: {
+                'start_time': {
+                    title_parameter: "Время начала",
+                    parameter: "start_time",
+                    type: "date",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '2022-05-04'
+                },
+                'locales': {
+                    title_parameter: "Время начала",
+                    parameter: "locales",
+                    type: "text",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '2022-05-04'
+                },
+                'locale': {
+                    title_parameter: "Время начала",
+                    parameter: "locale",
+                    type: "selectOne",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: 'Калининград',
+                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
+                },
+                'end_time': {
+                    title_parameter: "Время конца",
+                    parameter: "end_time",
+                    type: "date",
+                    description_parameters: 'Параметр отвечающий за конец выборки',
+                    value: '2022-05-04'
+                },
+            }
         },
         '2': {
             id: '2',
             title: 'Погода',
             api: 'COVID_API',
-            parameters: []
+            description: "Позволяет собрать данные по погоде в разных городах",
+            parametersOrder: [
+                'start_time','locale','locales', 'end_time'
+            ],
+            parameters: {
+                'start_time': {
+                    title_parameter: "Время начала",
+                    parameter: "start_time",
+                    type: "date",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '2022-05-04'
+                },
+                'locales': {
+                    title_parameter: "Время начала",
+                    parameter: "locales",
+                    type: "text",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '2022-05-04'
+                },
+                'locale': {
+                    title_parameter: "Время начала",
+                    parameter: "locale",
+                    type: "selectOne",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: 'Калининград',
+                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
+                },
+                'end_time': {
+                    title_parameter: "Время конца",
+                    parameter: "end_time",
+                    type: "date",
+                    description_parameters: 'Параметр отвечающий за конец выборки',
+                    value: '2022-05-04'
+                },
+            }
         },
         '3': {
             id: '3',
             title: 'Погода',
             api: 'COVID_API_2',
-            parameters: []
+            description: "Позволяет собрать данные по погоде в разных городах",
+            parametersOrder: [
+                'start_time','locale','locales', 'end_time'
+            ],
+            parameters: {
+                'start_time': {
+                    title_parameter: "Время начала",
+                    parameter: "start_time",
+                    type: "date",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '2022-05-04'
+                },
+                'locales': {
+                    title_parameter: "Время начала",
+                    parameter: "locales",
+                    type: "text",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '2022-05-04'
+                },
+                'locale': {
+                    title_parameter: "Время начала",
+                    parameter: "locale",
+                    type: "selectOne",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: 'Калининград',
+                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
+                },
+                'end_time': {
+                    title_parameter: "Время конца",
+                    parameter: "end_time",
+                    type: "date",
+                    description_parameters: 'Параметр отвечающий за конец выборки',
+                    value: '2022-05-04'
+                },
+            }
+            // parametersOrder: [
+            //     '1','2'
+            // ],
+            // parameters: {
+            //     '1':{
+            //         title_parameter: "Время начала",
+            //         parameter: "start_time",
+            //         type: "time",
+            //         description_parameters: 'Параметр отвечающий за начало выборки',
+            //     },
+            //     '2':{
+            //         title_parameter: "Время начала",
+            //         parameter: "start_time",
+            //         type: "time",
+            //         description_parameters: 'Параметр отвечающий за конец выборки',
+            //     },
         },
+
         '4': {
             id: '4',
             title: 'Погода',
             api: 'COVID_API_3',
-            parameters: []
+            description: "Позволяет собрать данные по погоде в разных городах",
+            parametersOrder: [
+                'start_time','locale','locales', 'end_time'
+            ],
+            parameters: {
+                'start_time': {
+                    title_parameter: "Время начала",
+                    parameter: "start_time",
+                    type: "date",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '2022-05-04'
+                },
+                'locales': {
+                    title_parameter: "Время начала",
+                    parameter: "locales",
+                    type: "text",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: '2022-05-04'
+                },
+                'locale': {
+                    title_parameter: "Время начала",
+                    parameter: "locale",
+                    type: "selectOne",
+                    description_parameters: 'Параметр отвечающий за начало выборки',
+                    value: 'Калининград',
+                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
+                },
+                'end_time': {
+                    title_parameter: "Время конца",
+                    parameter: "end_time",
+                    type: "date",
+                    description_parameters: 'Параметр отвечающий за конец выборки',
+                    value: '2022-05-04'
+                },
+            }
         },
-        // weatherAPI: {
-        //     id: '1',
-        //     title: 'Погода',
-        //     api: 'weatherAPI',
-        //     parameters: []
-        // },
-        // COVID_API: {
-        //     id: '2',
-        //     title: 'Погода',
-        //     api: 'COVID_API',
-        //     parameters: []
-        // },
-        // COVID_API_2: {
-        //     id: '3',
-        //     title: 'Погода',
-        //     api: 'COVID_API_2',
-        //     parameters: []
-        // },
-        // COVID_API_3: {
-        //     id: '4',
-        //     title: 'Погода',
-        //     api: 'COVID_API_3',
-        //     parameters: []
-        // },
     },
 
     APIsColumns: {
-        SelectedAPIs: {
-            id: 'SelectedAPIs',
-            title: 'SelectedAPIs',
-            APIsId: ['1', '2', '3', '4'],
-        },
         UnselectedAPIs: {
             id: 'UnselectedAPIs',
-            title: 'UnselectedAPIs',
+            title: 'Доступные API',
+            APIsId: ['1', '2', '3', '4'],
+        },
+        SelectedAPIs: {
+            id: 'SelectedAPIs',
+            title: 'Выбранные API',
             APIsId: [],
         }
     },
 
-
-    APIsColumnsOrder: ['SelectedAPIs', 'UnselectedAPIs']
+    APIsColumnsOrder: ['UnselectedAPIs', 'SelectedAPIs']
 }
-// tasks: {
-//         'task': { id: 'task', content: 'Some content' },
-//         'task1': { id: 'task1', content: 'Some content' },
-//         'task2': { id: 'task2', content: 'Some content' },
-//         'task3': { id: 'task3', content: 'Some content' },
-//         'task4': { id: 'task4', content: 'Some content' },
-//         'task5': { id: 'task5', content: 'Some content' },
-//     },
-
-//     columns: {
-//         'coloumn-1': {
-//             id: 'column1',
-//             title: 'todo',
-//             tasksID: ['task1', 'task2', 'task3', 'task4', 'task5']
-//         },
 
 
 let createOrderReducer = (state = initialState, action) => {
@@ -117,6 +250,13 @@ let createOrderReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
+        case SELECT_PAGE:
+
+            // debugger
+            return {
+                ...state,
+                SelectedPage: action.selectedPage,
+            }
 
         case DRAG_END_SELECTOR_API:
             const { destination, source, draggableId } = action.result;
@@ -151,17 +291,16 @@ let createOrderReducer = (state = initialState, action) => {
             }
 
 
-
             copyState = {
                 ...state
             }
 
             copyState.APIsColumns[source.droppableId].APIsId = [...APIsIdSource]
             copyState.APIsColumns[destination.droppableId].APIsId = [...APIsIdDestination]
-            console.log(state.APIsColumns.UnselectedAPIs.APIsId)
-            console.log(state.APIsColumns.SelectedAPIs.APIsId)
-            console.log(copyState.APIsColumns.UnselectedAPIs.APIsId)
-            console.log(copyState.APIsColumns.SelectedAPIs.APIsId)
+            // console.log(state.APIsColumns.UnselectedAPIs.APIsId)
+            // console.log(state.APIsColumns.SelectedAPIs.APIsId)
+            // console.log(copyState.APIsColumns.UnselectedAPIs.APIsId)
+            // console.log(copyState.APIsColumns.SelectedAPIs.APIsId)
 
             // debugger
             return copyState
@@ -187,18 +326,43 @@ let createOrderReducer = (state = initialState, action) => {
         //         login: action.body
         //     }
         // }
-        // case INPUT_PASSWORD_TEXT_UPDATE: {
-        //     return {
-        //         ...state,
-        //         password: action.body
-        //     }
-        // }
+        case INPUT_API_PARAMETER_DATA_UPDATE: {
+            copyState = {
+                ...state,
+                APIs: {...state.APIs}
+            }
+            let APiID = action.APiID
+            let parameterAPI = action.parameterAPI
+            let valueParameterAPI = action.valueParameterAPI
+            debugger
+            copyState.APIs[APiID] = { ...state.APIs[APiID] }
+            copyState.APIs[APiID].parameters[parameterAPI] = {
+                ...state.APIs[APiID].parameters[parameterAPI],
+                // value: 'valueParameterAPI'
+                value: valueParameterAPI
+            }
+            debugger
+            return copyState
+        }
         default:
             return state
     }
 }
 
 
+
+export const updateAPIParameterInputAreaCreator = (APiID, parameterAPI, valueParameterAPI) => (
+    {
+        type: INPUT_API_PARAMETER_DATA_UPDATE,
+        APiID: APiID,
+        parameterAPI: parameterAPI,
+        valueParameterAPI: valueParameterAPI
+    })
+// export const updatePasswordTextAreaCreator = (body) => ({ type: INPUT_PASSWORD_TEXT_UPDATE, body: body })
+
+
+
+export const onTabPageClickCreator = (selectedPage) => ({ type: SELECT_PAGE, selectedPage: selectedPage })
 export const onDragEndCreator = (result) => ({ type: DRAG_END_SELECTOR_API, result: result })
 // export const updatePasswordTextAreaCreator = (body) => ({ type: INPUT_PASSWORD_TEXT_UPDATE, body: body })
 

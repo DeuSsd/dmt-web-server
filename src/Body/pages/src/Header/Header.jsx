@@ -1,16 +1,44 @@
 import React from "react";
+import { NavLink, Outlet } from "react-router-dom";
 import style from "./Header.module.scss";
+import TabsPanelContainer from "./Tabs/TabsPanelContainer";
+
+
+
 
 
 const Header = (props) => {
-    return(
+    return (
+        <div>
         <div className={style.header}>
-            <div className={style.textLogo}>
-                DataMiningTools
+            <div>
+                <div className={style.textLogo}>
+                    DataMiningTools
+                </div>
+                <TabsPanelContainer pathnameLocation={props.pathnameLocation}/>
             </div>
             <div className={style.userBox}>
-                {props.userName}
+               <div>
+                   {props.userName}
+                </div> 
+                
+               <div>
+               <NavLink
+                    to={`/`}
+                    // activeClassName={style.selected}
+                    className={style.link}
+                    onClick={props.onLogOutClick}
+                // exact={true}
+                >
+                    log out
+                </ NavLink>
+                </div> 
+
+               
+
             </div>
+        </div>
+        <Outlet/>
         </div>
     )
 }

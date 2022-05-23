@@ -2,9 +2,8 @@ import React from "react";
 import style from "./APiCell.module.scss"
 
 
+
 const APiCell = (props) => {
-    let title = props.APi.title
-    // debugger
     return (
 
         <div

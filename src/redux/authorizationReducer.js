@@ -1,14 +1,17 @@
 import AuthService from "./services/auth.service";
 import UserService from "./services/user.service";
 
-const LOG_IN = 'LOG_IN'
 const SIGN_IN = 'SIGN_IN'
+const SIGN_UP = 'SIGN_UP'
+
+const LOG_OUT = 'LOG_OUT'
+
 const INPUT_LOGIN_TEXT_UPDATE = 'INPUT_LOGIN_TEXT_UPDATE'
 const INPUT_PASSWORD_TEXT_UPDATE = 'INPUT_PASSWORD_TEXT_UPDATE'
 
 let initialState = {
     'token': '',
-    'name': 'Denis',
+    'name': 'Denis O.',
     'login': "user",
     'password': "@Qwerty1234",
     'email': '',
@@ -18,7 +21,7 @@ let initialState = {
 let authorizationReducer = (state = initialState, action) => {
     let copyState;
     switch (action.type) {
-        case LOG_IN: {
+        case SIGN_IN: {
             copyState = { ...state }
             let login = state.login
             let password = state.password
@@ -29,7 +32,19 @@ let authorizationReducer = (state = initialState, action) => {
             })
             return copyState
         }
-        case SIGN_IN: {
+        case LOG_OUT: {
+            debugger
+            return {
+                ...state,
+                'token': '',
+                'name': '',
+                'login': "",
+                'password': "",
+                'email': '',
+                'stateAuth': false,
+            }
+        }
+        case SIGN_UP: {
             UserService.getPublicContent(state)
             return state
         }
@@ -50,8 +65,10 @@ let authorizationReducer = (state = initialState, action) => {
     }
 }
 
-export const logInCreator = () => ({ type: LOG_IN })
 export const signInCreator = () => ({ type: SIGN_IN })
+export const signUpCreator = () => ({ type: SIGN_UP })
+export const logOutCreator = () => ({ type: LOG_OUT })
+
 export const updateLoginTextAreaCreator = (body) => ({ type: INPUT_LOGIN_TEXT_UPDATE, body: body })
 export const updatePasswordTextAreaCreator = (body) => ({ type: INPUT_PASSWORD_TEXT_UPDATE, body: body })
 

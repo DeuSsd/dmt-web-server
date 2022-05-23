@@ -7,7 +7,10 @@ const API_URL = "http://localhost:3000";
 
 const getPublicContent = (state) => {
   debugger
-  return axios.get(API_URL + "/WeatherForecast",{ headers: { Authorization: 'Bearer ' + state["token"]  }});
+  return axios.get(API_URL + "/WeatherForecast",{
+     headers: { 
+    Authorization: 'Bearer ' + state["token"] 
+   }});
 };
 
 const getUserBoard = () => {
