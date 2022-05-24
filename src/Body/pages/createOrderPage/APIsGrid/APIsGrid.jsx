@@ -14,14 +14,14 @@ class APIsGrid extends React.Component {
         this.props.getAllAPIs()
     }
 
-    APIsColumnsItemsRender = () => (
-        this.props.APIsColumnsOrder.map((APiColumn, index) => {
+    APIsColumnsItemsRender = (props) => (
+       props.APIsColumnsOrder.map((APiColumn, index) => {
             // let ss = this.props.APIsColumns[APiColumn].id
             // debugger
             return (
                 <Droppable
-                    key={this.props.APIsColumns[APiColumn].id}
-                    droppableId={this.props.APIsColumns[APiColumn].id}>
+                    key={props.APIsColumns[APiColumn].id}
+                    droppableId={props.APIsColumns[APiColumn].id}>
                     {(provided) =>
                     // {
                     // debugger
@@ -30,10 +30,10 @@ class APIsGrid extends React.Component {
                         <APIsContainer
                             innerRef={provided.innerRef}
                             {...provided.droppableProps}
-                            key={this.props.APIsColumns[APiColumn].id}
-                            APIsColumn={this.props.APIsColumns[APiColumn]}
+                            key={props.APIsColumns[APiColumn].id}
+                            APIsColumn={props.APIsColumns[APiColumn]}
                             index={index}
-                            APIs={this.props.APIs}
+                            APIs={props.APIs}
                         >
                             {provided.placeholder}
                         </APIsContainer>
@@ -63,7 +63,7 @@ class APIsGrid extends React.Component {
                 >
                     <div
                         className={style.APIsGrid}>
-                        {this.APIsColumnsItemsRender()}
+                        {this.APIsColumnsItemsRender(this.props)}
                     </div>
                 </DragDropContext>
             </div>

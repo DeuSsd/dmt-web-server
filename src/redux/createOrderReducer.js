@@ -355,7 +355,7 @@ let createOrderReducer = (state = initialState, action) => {
             // debugger
             // let sss = action.getToken()
             // debugger
-            debugger
+            // debugger
 
             // switch (action.selectedPage) {
             //     case CHOICE_TAB:

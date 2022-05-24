@@ -109,7 +109,7 @@ const getSelectedAPIsParameters = (state, selectedAPIs) => {
 
 const getResultFile = (state, selectedAPIsAndParameters) => {
   debugger
-  return axios.post(API_URL + "", {
+  return axios.post(API_URL + GET_RESULT, {
     // responseType: 'blob',
     headers: {
       Authorization: 'Bearer ' + state["token"]

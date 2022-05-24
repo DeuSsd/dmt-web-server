@@ -56,8 +56,3 @@ const NavigationPanel = (props) => {
 
 export default NavigationPanel;
 
-{/* <Button
-// actionOnClick={props.onSignUpClick}
-actionOnClick={props.onSignUpClick}
-text="Sign Up"
-/> */}

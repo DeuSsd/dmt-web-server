@@ -36,7 +36,7 @@ const NavigationPanel = (props) => {
                 <Button
                     pathLink={props.pathLinkNext}
                     actionOnClick={SwitchToNextTab}
-                    text={"Сделать заказ"}
+                    text={"Сделать"}
                 />
             </div>
         </div>
@@ -55,9 +55,3 @@ const NavigationPanel = (props) => {
 //   />
 
 export default NavigationPanel;
-
-{/* <Button
-// actionOnClick={props.onSignUpClick}
-actionOnClick={props.onSignUpClick}
-text="Sign Up"
-/> */}

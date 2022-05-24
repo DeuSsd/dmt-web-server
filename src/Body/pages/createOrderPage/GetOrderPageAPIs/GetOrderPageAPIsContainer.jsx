@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { getResultFileCreator } from "../../../../redux/createOrderReducer";
 // import { onDragEndCreator } from "../../../../redux/createOrderReducer";
 import GetOrderPageAPIs from "./GetOrderPageAPIs";
 
@@ -12,7 +13,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        // onDragEnd: (result) => { dispatch(onDragEndCreator(result)) },
+       
+        getResultFile: () => { dispatch(getResultFileCreator()) },
     }
 }
 

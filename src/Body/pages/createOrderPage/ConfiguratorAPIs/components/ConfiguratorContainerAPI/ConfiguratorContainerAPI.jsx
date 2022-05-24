@@ -15,16 +15,20 @@ const ConfiguratorContainerAPI = (props) => {
     //     )
     // })
 
-    // debugger
-    let ParameterItems = props.API.parametersOrder.map((parameterID) => {
-        return (
-            <ParameterContainerAPI
-                APiID={props.APiID}
-                key={parameterID+props.APiID}
-                parameterObject={props.API.parameters[parameterID]}
-            />
-        )
-    })
+   
+    let ParameterItems = []
+    if (props.API.parametersOrder){
+        ParameterItems = props.API.parametersOrder.map((parameterID) => {
+            debugger
+            return (
+                <ParameterContainerAPI
+                    APiID={props.APiID}
+                    key={parameterID+props.APiID}
+                    parameterObject={props.API.parameters[parameterID]}
+                />
+            )
+        })
+    }
     // // debugger
     // let ParameterItems = props.API.parameters.map((parameterObject) => {
     //     return (

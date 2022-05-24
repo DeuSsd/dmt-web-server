@@ -11,13 +11,13 @@ class ConfiguratorAPIs extends React.Component {
         this.props.getSelectedAPIsParameters()
     }
 
-    ConfiguratorAPiItemsRender = () => (
-        this.props.APIsOrderID.map((APiID) => {
+    ConfiguratorAPiItemsRender = (props) => (
+        props.APIsOrderID.map((APiID) => {
             return (
                 <ConfiguratorContainerAPI
                     APiID={APiID}
                     key={APiID}
-                    API={this.props.APIs[APiID]}
+                    API={props.APIs[APiID]}
                 />
             )
         })
@@ -35,7 +35,7 @@ class ConfiguratorAPIs extends React.Component {
                     NextTab={this.props.NextTab}
                 />
                 <div className={style.ConfiguratorAPIs}>
-                    {this.ConfiguratorAPiItemsRender()}
+                    {this.ConfiguratorAPiItemsRender(this.props)}
                 </div>
                 <NavigationPanelContainer
                     pathLinkPrevious={this.props.pathLinkPrevious}

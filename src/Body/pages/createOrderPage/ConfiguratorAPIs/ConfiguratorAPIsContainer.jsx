@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         // onDragEnd: (result) => { dispatch(onDragEndCreator(result)) },
-        getSelectedAPIsParameters: (result) => { dispatch(getSelectedAPIsParametersCreator(result)) },
+        getSelectedAPIsParameters: () => { dispatch(getSelectedAPIsParametersCreator()) },
 
     }
 }
