@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { onDragEndCreator } from "../../../../redux/createOrderReducer";
+import { getAllAPIsCreator, onDragEndCreator } from "../../../../redux/createOrderReducer";
 import APIsGrid from "./APIsGrid";
 
 
@@ -14,6 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onDragEnd: (result) => { dispatch(onDragEndCreator(result)) },
+        getAllAPIs: (result) => { dispatch(getAllAPIsCreator(result)) },
     }
 }
 

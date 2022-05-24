@@ -14,24 +14,76 @@ const GET_ALL_APIS_PARAMETER_URL = '/apis/getResult'
 
 
 const getAllAPIs = (state) => {
-  debugger
-  return axios.get(API_URL + GET_ALL_APIS_URL, {
-    headers: {
-      Authorization: 'Bearer ' + state["token"]
-    }
-  });
+  // debugger
+  // return axios.get(API_URL + GET_ALL_APIS_URL, {
+  //   headers: {
+  //     Authorization: 'Bearer ' + state["token"]
+  //   }
+  // });
+
+
+  return ({
+    "apis": [
+        {
+            'title': 'Погода',
+            'api': 'weather_API',
+          	'description': "Позволяет собрать данные по погоде в разных городах"
+        },
+        {
+           'title': 'Погода',
+            "api": "covid_API",
+            'description': "Позволяет собрать данные по ковиду в разных городах"
+        }
+       ]
+})
+
+
 };
 
 
 
 const getSelectedAPIsParameters = (state, selectedAPIs) => {
-  debugger
-  return axios.post(API_URL + GET_ALL_APIS_PARAMETER_URL, {
-    headers: {
-      Authorization: 'Bearer ' + state["token"]
-    },
-    data: selectedAPIs
-  });
+  // debugger
+  // return axios.post(API_URL + GET_ALL_APIS_PARAMETER_URL, {
+  //   headers: {
+  //     Authorization: 'Bearer ' + state["token"]
+  //   },
+  //   data: selectedAPIs
+  // });
+
+  
+  return ({
+    "task_id" : "1123123",
+    "user_id": "2312421",
+    "insides": [
+      {
+        "api": "weather_API",
+        "parameters" : [{
+            "parameter": "start_time",
+            "type": "time",
+            "value": "10/10/10"
+            },
+            {
+             "parameter": "end_time",
+            "type": "time",
+            "value": "11/11/11"
+            }]
+      },
+      {
+        "api": "covid_API",
+        "parameters" : [{
+            "parameter": "start_time",
+            "type": "time",
+            "value": "10/10/10"
+            },
+            {
+             "parameter": "end_time",
+            "type": "time",
+            "value": "11/11/11"
+            }]
+      }
+    ]
+  })
 };
 
 
@@ -198,7 +250,7 @@ let initialState = {
       UnselectedAPIs: {
           id: 'UnselectedAPIs',
           title: 'Доступные API',
-          APIsId: [], //TODO загрузка невыбранных API [APIsOrderID]
+          APIsId: [], //TODO загрузка Доступных API [APIsOrderID]
       },
       SelectedAPIs: {
           id: 'SelectedAPIs',
@@ -209,3 +261,6 @@ let initialState = {
 
   APIsColumnsOrder: ['UnselectedAPIs', 'SelectedAPIs']
 }
+
+
+

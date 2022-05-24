@@ -1,9 +1,19 @@
 // import store from "./reduxState"
-// import APiService from "./services/api.service"
+import APiService from "./services/api.service"
 
 const DRAG_END_SELECTOR_API = 'DRAG_END_SELECTOR_API'
 const SELECT_PAGE = 'SELECT_PAGE'
 const INPUT_API_PARAMETER_DATA_UPDATE = 'INPUT_API_PARAMETER_DATA_UPDATE'
+
+const LOAD_ALL_APIS = 'LOAD_ALL_APIS'
+const LOAD_ALL_APIS_PARAMETERS = 'LOAD_ALL_APIS_PARAMETERS'
+
+
+const CHOICE_TAB = 'Выбор'
+const CONFIGURATION_TAB = 'Конфигурирование'
+const PREVIEW_TAB = 'Предпросмотр'
+const OPDER_TAB = 'Заказ'
+
 
 
 let initialState = {
@@ -22,6 +32,29 @@ let initialState = {
 
     SelectedPage: 'Выбор',
 
+    // APIsOrderID: ['1'], // TODO вписать все APIsId
+
+    // APIs: {
+    //     '1': {
+    //         id: '1', // TODO сгенерировать порядковый id
+    //         title: '',
+    //         api: '',
+    //         description: '',
+    //         parametersOrder: ['template'], // TODO вписать все parameterы
+    //         parameters: {
+    //             'template': { // TODO parameter == parameter
+    //                 title_parameter: '',
+    //                 parameter: 'template',
+    //                 type: '',
+    //                 description_parameters: '',
+    //                 value: '',
+    //                 data: []
+    //             },
+    //         }
+    //     },
+    // },
+
+
     APIsOrderID: ['1', '2', '3', '4'],
 
     APIs: {
@@ -31,7 +64,7 @@ let initialState = {
             api: 'weatherAPI',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time','locale','locales', 'end_time'
+                'start_time', 'locale', 'locales', 'end_time'
             ],
             parameters: {
                 'start_time': {
@@ -54,7 +87,7 @@ let initialState = {
                     type: "selectOne",
                     description_parameters: 'Параметр отвечающий за начало выборки',
                     value: 'Калининград',
-                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
+                    data: ['Калининград', 'Санкт-Петербург', 'Москва', 'Харовск']
                 },
                 'end_time': {
                     title_parameter: "Время конца",
@@ -71,7 +104,7 @@ let initialState = {
             api: 'COVID_API',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time','locale','locales', 'end_time'
+                'start_time', 'locale', 'locales', 'end_time'
             ],
             parameters: {
                 'start_time': {
@@ -94,7 +127,7 @@ let initialState = {
                     type: "selectOne",
                     description_parameters: 'Параметр отвечающий за начало выборки',
                     value: 'Калининград',
-                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
+                    data: ['Калининград', 'Санкт-Петербург', 'Москва', 'Харовск']
                 },
                 'end_time': {
                     title_parameter: "Время конца",
@@ -111,7 +144,7 @@ let initialState = {
             api: 'COVID_API_2',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time','locale','locales', 'end_time'
+                'start_time', 'locale', 'locales', 'end_time'
             ],
             parameters: {
                 'start_time': {
@@ -134,7 +167,7 @@ let initialState = {
                     type: "selectOne",
                     description_parameters: 'Параметр отвечающий за начало выборки',
                     value: 'Калининград',
-                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
+                    data: ['Калининград', 'Санкт-Петербург', 'Москва', 'Харовск']
                 },
                 'end_time': {
                     title_parameter: "Время конца",
@@ -168,7 +201,7 @@ let initialState = {
             api: 'COVID_API_3',
             description: "Позволяет собрать данные по погоде в разных городах",
             parametersOrder: [
-                'start_time','locale','locales', 'end_time'
+                'start_time', 'locale', 'locales', 'end_time'
             ],
             parameters: {
                 'start_time': {
@@ -191,7 +224,7 @@ let initialState = {
                     type: "selectOne",
                     description_parameters: 'Параметр отвечающий за начало выборки',
                     value: 'Калининград',
-                    data: ['Калининград','Санкт-Петербург','Москва','Харовск']
+                    data: ['Калининград', 'Санкт-Петербург', 'Москва', 'Харовск']
                 },
                 'end_time': {
                     title_parameter: "Время конца",
@@ -253,18 +286,64 @@ let createOrderReducer = (state = initialState, action) => {
 
 
     switch (action.type) {
-        // case LOAD_ALL_APIS:
-            // APiService.getAllAPIs(state.)
 
+        case LOAD_ALL_APIS:
+            let result = APiService.getAllAPIs(({ token: action.getToken() }))
+            // debugger
+            copyState = serializerGetAllAPIs(state, result)
+            // debugger
+            return copyState
+
+        case LOAD_ALL_APIS_PARAMETERS:
+            let res = APiService.getSelectedAPIsParameters(
+                { token: action.getToken() },
+                { "APIs": ["weather_API", "covid_API"] }
+            )
+
+            // copyState = {
+            //     ...state,
+            //     APIs: { ...state.APIs }
+            // }
+            // let APiID = action.APiID
+            // let parameterAPI = action.parameterAPI
+            // let valueParameterAPI = action.valueParameterAPI
+            // debugger
+            // copyState.APIs[APiID] = { ...state.APIs[APiID] }
+            // copyState.APIs[APiID].parameters[parameterAPI] = {
+            //     ...state.APIs[APiID].parameters[parameterAPI],
+            //     // value: 'valueParameterAPI'
+            //     value: valueParameterAPI
+            // }
+
+
+            debugger
+            return state
 
         case SELECT_PAGE:
-            // let ss = store.getState()
-            debugger
-            let sss = action.getToken()
-            debugger
+            // // let ss = store.getState()
             // debugger
+            // let sss = action.getToken()
+            // debugger
+            debugger
+
+            // switch (action.selectedPage) {
+            //     case CHOICE_TAB:
+            //         // const CHOICE_TAB = 'Выбор'
+            //         // const CONFIGURATION_TAB = 'Конфигурирование'
+            //         // const PREVIEW_TAB = 'Предпросмотр'
+            //         // const OPDER_TAB = 'Заказ'
+
+
+            //         let result = APiService.getAllAPIs(({ token: action.getToken() }))
+            //         debugger
+            //         copyState = serializerGetAllAPIs(state, result)
+            //         debugger
+            //         break
+            //     default:
+            //         copyState = state
+            // }
             return {
-                ...state,
+                ...state,  //TODO исправить на нормальное: копирование переопределение  ...state
                 SelectedPage: action.selectedPage,
             }
 
@@ -339,7 +418,7 @@ let createOrderReducer = (state = initialState, action) => {
         case INPUT_API_PARAMETER_DATA_UPDATE: {
             copyState = {
                 ...state,
-                APIs: {...state.APIs}
+                APIs: { ...state.APIs }
             }
             let APiID = action.APiID
             let parameterAPI = action.parameterAPI
@@ -373,8 +452,50 @@ export const updateAPIParameterInputAreaCreator = (APiID, parameterAPI, valuePar
 
 
 export const onTabPageClickCreator = (selectedPage) => ({ type: SELECT_PAGE, selectedPage: selectedPage })
+export const getAllAPIsCreator = () => ({ type: LOAD_ALL_APIS })
 export const onDragEndCreator = (result) => ({ type: DRAG_END_SELECTOR_API, result: result })
 // export const updatePasswordTextAreaCreator = (body) => ({ type: INPUT_PASSWORD_TEXT_UPDATE, body: body })
 
 
 export default createOrderReducer;
+
+
+
+
+
+
+
+let serializerGetAllAPIs = (state, requestData) => {
+    let APIsOrderID = []
+    let APIs = {}
+    let counter = 0
+    requestData['apis'].map((APi) => {
+        let id = (++counter) + ''
+        APIsOrderID.push(id);
+        APIs[id] = {
+            ...APi,
+            id: id
+        }
+        return true
+    })
+
+    // debugger
+    let copyState = {
+        ...state,
+        APIs: APIs,
+        APIsOrderID: APIsOrderID,
+        APIsColumns: {
+            ...state.APIsColumns,
+            UnselectedAPIs: {
+                ...state.APIsColumns.UnselectedAPIs,
+                APIsId: [...APIsOrderID]
+            },
+            SelectedAPIs: {
+                ...state.APIsColumns.SelectedAPIs,
+                APIsId: []
+            },
+        }
+    }
+    // debugger
+    return copyState
+}
