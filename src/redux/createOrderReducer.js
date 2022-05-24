@@ -319,7 +319,7 @@ let createOrderReducer = (state = initialState, action) => {
             // }
 
 
-            debugger
+            // debugger
             return copyState
 
         case LOAD_RESULT_FILE:
@@ -347,7 +347,7 @@ let createOrderReducer = (state = initialState, action) => {
             // }
 
 
-            debugger
+            // debugger
             return state
 
         case SELECT_PAGE:

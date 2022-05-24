@@ -19,7 +19,7 @@ const ConfiguratorContainerAPI = (props) => {
     let ParameterItems = []
     if (props.API.parametersOrder){
         ParameterItems = props.API.parametersOrder.map((parameterID) => {
-            debugger
+            // debugger
             return (
                 <ParameterContainerAPI
                     APiID={props.APiID}
