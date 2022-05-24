@@ -7,6 +7,7 @@ const INPUT_API_PARAMETER_DATA_UPDATE = 'INPUT_API_PARAMETER_DATA_UPDATE'
 
 const LOAD_ALL_APIS = 'LOAD_ALL_APIS'
 const LOAD_ALL_APIS_PARAMETERS = 'LOAD_ALL_APIS_PARAMETERS'
+const LOAD_RESULT_FILE= 'LOAD_RESULT_FILE'
 
 
 const CHOICE_TAB = 'Выбор'
@@ -284,22 +285,52 @@ let createOrderReducer = (state = initialState, action) => {
     //     },
     // }
 
+    let resultHTTPRequest
 
     switch (action.type) {
-
         case LOAD_ALL_APIS:
-            let result = APiService.getAllAPIs(({ token: action.getToken() }))
+            resultHTTPRequest = APiService.getAllAPIs(({ token: action.getToken() }))
             // debugger
-            copyState = serializerGetAllAPIs(state, result)
+            copyState = serializerGetAllAPIs(state, resultHTTPRequest)
+            resultHTTPRequest = {}
             // debugger
             return copyState
-
         case LOAD_ALL_APIS_PARAMETERS:
-            let res = APiService.getSelectedAPIsParameters(
+            resultHTTPRequest = APiService.getSelectedAPIsParameters(
                 { token: action.getToken() },
                 { "APIs": ["weather_API", "covid_API"] }
             )
+            // debugger
+            copyState = serializerGetSelectedAPIsParameters(state, resultHTTPRequest)
+            resultHTTPRequest = {}
+            // copyState = {
+            //     ...state,
+            //     APIs: { ...state.APIs }
+            // }
+            // let APiID = action.APiID
+            // let parameterAPI = action.parameterAPI
+            // let valueParameterAPI = action.valueParameterAPI
+            // debugger
+            // copyState.APIs[APiID] = { ...state.APIs[APiID] }
+            // copyState.APIs[APiID].parameters[parameterAPI] = {
+            //     ...state.APIs[APiID].parameters[parameterAPI],
+            //     // value: 'valueParameterAPI'
+            //     value: valueParameterAPI
+            // }
 
+
+            debugger
+            return copyState
+
+        case LOAD_RESULT_FILE:
+            let selectedAPIsAndParameters = {}
+            resultHTTPRequest = APiService.getResultFile(
+                { token: action.getToken() },
+                selectedAPIsAndParameters
+            )
+            // debugger
+            // copyState = serializerGetSelectedAPIsParameters(state, resultHTTPRequest)
+            resultHTTPRequest = {}
             // copyState = {
             //     ...state,
             //     APIs: { ...state.APIs }
@@ -452,7 +483,13 @@ export const updateAPIParameterInputAreaCreator = (APiID, parameterAPI, valuePar
 
 
 export const onTabPageClickCreator = (selectedPage) => ({ type: SELECT_PAGE, selectedPage: selectedPage })
+
 export const getAllAPIsCreator = () => ({ type: LOAD_ALL_APIS })
+export const getSelectedAPIsParametersCreator = () => ({ type: LOAD_ALL_APIS_PARAMETERS})
+export const getResultFileCreator = () => ({ type: LOAD_RESULT_FILE})
+
+
+
 export const onDragEndCreator = (result) => ({ type: DRAG_END_SELECTOR_API, result: result })
 // export const updatePasswordTextAreaCreator = (body) => ({ type: INPUT_PASSWORD_TEXT_UPDATE, body: body })
 
@@ -495,6 +532,52 @@ let serializerGetAllAPIs = (state, requestData) => {
                 APIsId: []
             },
         }
+    }
+    // debugger
+    return copyState
+}
+
+let serializerGetSelectedAPIsParameters = (state, requestData) => {
+    let APIsOrderID = []
+    let parametersOrder = []
+    let APIsState = {}
+    let parametersState = {}
+    let counter = 0
+    
+    requestData['insides'].map((APi) => {
+        let id = (++counter) + '';
+        APIsOrderID.push(id);
+        // debugger
+        APi['parameters'].map((parameter) => {
+            parametersOrder.push(parameter.parameter)
+            parametersState[parameter.parameter]={
+                // ...parameter, //TODO убедиться что они равны
+                title_parameter: parameter.title_parameter,
+                parameter: parameter.parameter,
+                type: parameter.type,
+                description_parameters: parameter.description_parameters,
+                value: '',
+                data: parameter.data 
+            }
+            return true
+        })
+
+        APIsState[id] = {
+            ...APi['api'], //TODO посмотреть содержимое
+            id: id,
+            parameters: {...parametersState},
+            parametersOrder:[...parametersOrder]
+        }
+        parametersState = {}
+        parametersOrder = []
+        return true
+    })
+
+    // debugger
+    let copyState = {
+        ...state,
+        APIs: APIsState,
+        APIsOrderID: APIsOrderID,
     }
     // debugger
     return copyState

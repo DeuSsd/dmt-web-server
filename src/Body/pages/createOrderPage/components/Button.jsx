@@ -6,7 +6,7 @@ import style from "./Button.module.scss";
 
 const Button = (props) => {
     let action = () => {
-        debugger
+        // debugger
         props.actionOnClick()
     }
     // debugger

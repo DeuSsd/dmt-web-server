@@ -20,7 +20,7 @@ const ConfiguratorContainerAPI = (props) => {
         return (
             <ParameterContainerAPI
                 APiID={props.APiID}
-                key={parameterID}
+                key={parameterID+props.APiID}
                 parameterObject={props.API.parameters[parameterID]}
             />
         )

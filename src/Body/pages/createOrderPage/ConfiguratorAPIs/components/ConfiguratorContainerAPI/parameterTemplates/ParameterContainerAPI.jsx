@@ -22,7 +22,7 @@ const ParameterContainerAPI = (props) => {
                 return (<InputFieldPTContainer 
                     parameterAPI={parameter}
                     APiID = {props.APiID}
-                    key={parameter}
+                    key={parameter+props.APiID}
                     value={value}
                     input_type={type}
                     />)
@@ -30,7 +30,7 @@ const ParameterContainerAPI = (props) => {
                 return (<InputFieldPTContainer 
                     parameterAPI={parameter}
                     APiID = {props.APiID}
-                    key={parameter}
+                    key={parameter+props.APiID}
                     value={value}
                     input_type={type} 
                     />)
@@ -38,7 +38,7 @@ const ParameterContainerAPI = (props) => {
                 return (<SelectorFieldPTContainer 
                     parameterAPI={parameter}
                     APiID = {props.APiID}
-                    key={parameter}
+                    key={parameter+props.APiID}
                     value={value}
                     input_type={type} 
                     data={data}

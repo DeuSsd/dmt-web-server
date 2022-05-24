@@ -5,8 +5,11 @@ const API_URL = "http://localhost:3000";
 
 const GET_ALL_APIS_URL = '/'
 const GET_ALL_APIS_PARAMETER_URL = '/apis/getResult'
+const GET_RESULT = '/getResult'
 
 
+
+const FileDownload = require('js-file-download');
 
 // const getAllAPIs = () => {
 //   return axios.get(API_URL + "user", { headers: authHeader() });
@@ -24,18 +27,18 @@ const getAllAPIs = (state) => {
 
   return ({
     "apis": [
-        {
-            'title': 'Погода',
-            'api': 'weather_API',
-          	'description': "Позволяет собрать данные по погоде в разных городах"
-        },
-        {
-           'title': 'Погода',
-            "api": "covid_API",
-            'description': "Позволяет собрать данные по ковиду в разных городах"
-        }
-       ]
-})
+      {
+        'title': 'Погода',
+        'api': 'weather_API',
+        'description': "Позволяет собрать данные по погоде в разных городах"
+      },
+      {
+        'title': 'Ковид',
+        "api": "covid_API",
+        'description': "Позволяет собрать данные по ковиду в разных городах"
+      }
+    ]
+  })
 
 
 };
@@ -51,40 +54,110 @@ const getSelectedAPIsParameters = (state, selectedAPIs) => {
   //   data: selectedAPIs
   // });
 
-  
+
   return ({
-    "task_id" : "1123123",
+    "task_id": "1123123",
     "user_id": "2312421",
     "insides": [
       {
-        "api": "weather_API",
-        "parameters" : [{
-            "parameter": "start_time",
-            "type": "time",
-            "value": "10/10/10"
-            },
-            {
-             "parameter": "end_time",
-            "type": "time",
-            "value": "11/11/11"
-            }]
+        "api":
+        {
+          "title": "Погода",
+          "api": "weather_API",
+          'description': "Позволяет собрать данные по погоде в разных городах"
+        },
+        "parameters": [{
+          "title_parameter": "Время начала",
+          "parameter": "start_time",
+          "type": "date",
+          'description_parameters': 'Параметр отвечающий за начало выборки'
+        },
+        {
+          "title_parameter": "Время конца",
+          "parameter": "end_time",
+          "type": "date",
+          'description_parameters': 'Параметр отвечающий за конец выборки'
+        }
+        ]
       },
       {
-        "api": "covid_API",
-        "parameters" : [{
-            "parameter": "start_time",
-            "type": "time",
-            "value": "10/10/10"
-            },
-            {
-             "parameter": "end_time",
-            "type": "time",
-            "value": "11/11/11"
-            }]
-      }
+        "api":
+        {
+          "title": "Ковид",
+          "api": "covid_API",
+          'description': "Позволяет собрать данные по погоде в разных городах"
+        },
+        "parameters": [{
+          "title_parameter": "Время начала",
+          "parameter": "start_time",
+          "type": "date",
+          'description_parameters': 'Параметр отвечающий за начало выборки'
+        },
+        {
+          "title_parameter": "Время конца",
+          "parameter": "end_time",
+          "type": "date",
+          'description_parameters': 'Параметр отвечающий за конец выборки'
+        }
+        ]
+      },
+
     ]
   })
 };
+
+
+const getResultFile = (state, selectedAPIsAndParameters) => {
+  // debugger
+  return axios.post(API_URL + "", {
+    // responseType: 'blob',
+    headers: {
+      Authorization: 'Bearer ' + state["token"]
+    },
+    body: selectedAPIsAndParameters
+  }).then((response) => {
+    // debugger;
+    FileDownload(response.data, 'report.csv')
+  });
+};
+
+
+
+
+
+//   return ({
+//     "task_id" : "1123123",
+//     "user_id": "2312421",
+//     "insides": [
+//       {
+//         "api": "weather_API",
+//         "parameters" : [{
+//             "parameter": "start_time",
+//             "type": "date",
+//             "value": "10/10/10"
+//             },
+//             {
+//              "parameter": "end_time",
+//             "type": "date",
+//             "value": "11/11/11"
+//             }]
+//       },
+//       {
+//         "api": "covid_API",
+//         "parameters" : [{
+//             "parameter": "start_time",
+//             "type": "date",
+//             "value": "10/10/10"
+//             },
+//             {
+//              "parameter": "end_time",
+//             "type": "date",
+//             "value": "11/11/11"
+//             }]
+//       }
+//     ]
+//   })
+// };
 
 
 
@@ -95,6 +168,7 @@ const getSelectedAPIsParameters = (state, selectedAPIs) => {
 const APiService = {
   getAllAPIs,
   getSelectedAPIsParameters,
+  getResultFile
 };
 
 export default APiService;
@@ -107,6 +181,7 @@ export default APiService;
 
 
 
+/* A library that allows you to download files. */
 
 
 // const FileDownload = require('js-file-download');
@@ -210,16 +285,16 @@ export default APiService;
 
 let initialState = {
   Pages: [
-      'Выбор',
-      'Конфигурирование',
-      'Предпросмотр',
-      'Заказ'],
+    'Выбор',
+    'Конфигурирование',
+    'Предпросмотр',
+    'Заказ'],
 
   TabLinks: {
-      'Выбор': '/api-choose',
-      'Конфигурирование': '/api-configure',
-      'Предпросмотр': '/api-preview',
-      'Заказ': '/api-order'
+    'Выбор': '/api-choose',
+    'Конфигурирование': '/api-configure',
+    'Предпросмотр': '/api-preview',
+    'Заказ': '/api-order'
   },
 
   SelectedPage: 'Выбор',
@@ -227,36 +302,36 @@ let initialState = {
   APIsOrderID: ['1'], // TODO вписать все APIsId
 
   APIs: {
-      '1': {
-          id: '1', // TODO сгенерировать порядковый id
-          title: '',
-          api: '',
-          description: '',
-          parametersOrder: ['template'], // TODO вписать все parameterы
-          parameters: {
-              'template': { // TODO parameter == parameter
-                  title_parameter: '',
-                  parameter: 'template',
-                  type: '',
-                  description_parameters: '',
-                  value: '',
-                  data: [] 
-              },
-          }
-      },
+    '1': {
+      id: '1', // TODO сгенерировать порядковый id
+      title: '',
+      api: '',
+      description: '',
+      parametersOrder: ['template'], // TODO вписать все parameterы
+      parameters: {
+        'template': { // TODO parameter == parameter
+          title_parameter: '',
+          parameter: 'template',
+          type: '',
+          description_parameters: '',
+          value: '',
+          data: []
+        },
+      }
+    },
   },
 
   APIsColumns: {
-      UnselectedAPIs: {
-          id: 'UnselectedAPIs',
-          title: 'Доступные API',
-          APIsId: [], //TODO загрузка Доступных API [APIsOrderID]
-      },
-      SelectedAPIs: {
-          id: 'SelectedAPIs',
-          title: 'Выбранные API',
-          APIsId: [],
-      }
+    UnselectedAPIs: {
+      id: 'UnselectedAPIs',
+      title: 'Доступные API',
+      APIsId: [], //TODO загрузка Доступных API [APIsOrderID]
+    },
+    SelectedAPIs: {
+      id: 'SelectedAPIs',
+      title: 'Выбранные API',
+      APIsId: [],
+    }
   },
 
   APIsColumnsOrder: ['UnselectedAPIs', 'SelectedAPIs']

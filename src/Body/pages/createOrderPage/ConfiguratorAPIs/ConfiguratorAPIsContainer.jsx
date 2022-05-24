@@ -1,4 +1,5 @@
 import { connect } from "react-redux";
+import { getSelectedAPIsParametersCreator } from "../../../../redux/createOrderReducer";
 // import { onDragEndCreator } from "../../../../redux/createOrderReducer";
 import ConfiguratorAPIs from "./ConfiguratorAPIs";
 
@@ -13,6 +14,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         // onDragEnd: (result) => { dispatch(onDragEndCreator(result)) },
+        getSelectedAPIsParameters: (result) => { dispatch(getSelectedAPIsParametersCreator(result)) },
+
     }
 }
 

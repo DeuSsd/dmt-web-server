@@ -12,7 +12,7 @@ const APiCell = (props) => {
             ref={props.innerRef}
 
         >
-            {props.APi.api}
+            {props.APi.title}
         </div>
     )
 }
