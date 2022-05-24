@@ -14,7 +14,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onDragEnd: (result) => { dispatch(onDragEndCreator(result)) },
-        getAllAPIs: (result) => { dispatch(getAllAPIsCreator(result)) },
+        getAllAPIs: () => { dispatch(getAllAPIsCreator()) },
     }
 }
 

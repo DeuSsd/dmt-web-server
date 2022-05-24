@@ -108,7 +108,7 @@ const getSelectedAPIsParameters = (state, selectedAPIs) => {
 
 
 const getResultFile = (state, selectedAPIsAndParameters) => {
-  // debugger
+  debugger
   return axios.post(API_URL + "", {
     // responseType: 'blob',
     headers: {
@@ -116,7 +116,7 @@ const getResultFile = (state, selectedAPIsAndParameters) => {
     },
     body: selectedAPIsAndParameters
   }).then((response) => {
-    // debugger;
+    debugger;
     FileDownload(response.data, 'report.csv')
   });
 };

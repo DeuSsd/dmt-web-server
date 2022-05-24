@@ -7,7 +7,7 @@ const INPUT_API_PARAMETER_DATA_UPDATE = 'INPUT_API_PARAMETER_DATA_UPDATE'
 
 const LOAD_ALL_APIS = 'LOAD_ALL_APIS'
 const LOAD_ALL_APIS_PARAMETERS = 'LOAD_ALL_APIS_PARAMETERS'
-const LOAD_RESULT_FILE= 'LOAD_RESULT_FILE'
+const LOAD_RESULT_FILE = 'LOAD_RESULT_FILE'
 
 
 const CHOICE_TAB = 'Выбор'
@@ -323,7 +323,7 @@ let createOrderReducer = (state = initialState, action) => {
             return copyState
 
         case LOAD_RESULT_FILE:
-            let selectedAPIsAndParameters = {}
+            let selectedAPIsAndParameters = serializerGetResultFile(state)
             resultHTTPRequest = APiService.getResultFile(
                 { token: action.getToken() },
                 selectedAPIsAndParameters
@@ -485,8 +485,8 @@ export const updateAPIParameterInputAreaCreator = (APiID, parameterAPI, valuePar
 export const onTabPageClickCreator = (selectedPage) => ({ type: SELECT_PAGE, selectedPage: selectedPage })
 
 export const getAllAPIsCreator = () => ({ type: LOAD_ALL_APIS })
-export const getSelectedAPIsParametersCreator = () => ({ type: LOAD_ALL_APIS_PARAMETERS})
-export const getResultFileCreator = () => ({ type: LOAD_RESULT_FILE})
+export const getSelectedAPIsParametersCreator = () => ({ type: LOAD_ALL_APIS_PARAMETERS })
+export const getResultFileCreator = () => ({ type: LOAD_RESULT_FILE })
 
 
 
@@ -502,7 +502,7 @@ export default createOrderReducer;
 
 
 
-let serializerGetAllAPIs = (state, requestData) => {
+const serializerGetAllAPIs = (state, requestData) => {
     let APIsOrderID = []
     let APIs = {}
     let counter = 0
@@ -537,27 +537,27 @@ let serializerGetAllAPIs = (state, requestData) => {
     return copyState
 }
 
-let serializerGetSelectedAPIsParameters = (state, requestData) => {
+const serializerGetSelectedAPIsParameters = (state, requestData) => {
     let APIsOrderID = []
     let parametersOrder = []
     let APIsState = {}
     let parametersState = {}
     let counter = 0
-    
+
     requestData['insides'].map((APi) => {
         let id = (++counter) + '';
         APIsOrderID.push(id);
         // debugger
         APi['parameters'].map((parameter) => {
             parametersOrder.push(parameter.parameter)
-            parametersState[parameter.parameter]={
+            parametersState[parameter.parameter] = {
                 // ...parameter, //TODO убедиться что они равны
                 title_parameter: parameter.title_parameter,
                 parameter: parameter.parameter,
                 type: parameter.type,
                 description_parameters: parameter.description_parameters,
                 value: '',
-                data: parameter.data 
+                data: parameter.data
             }
             return true
         })
@@ -565,8 +565,8 @@ let serializerGetSelectedAPIsParameters = (state, requestData) => {
         APIsState[id] = {
             ...APi['api'], //TODO посмотреть содержимое
             id: id,
-            parameters: {...parametersState},
-            parametersOrder:[...parametersOrder]
+            parameters: { ...parametersState },
+            parametersOrder: [...parametersOrder]
         }
         parametersState = {}
         parametersOrder = []
@@ -581,4 +581,25 @@ let serializerGetSelectedAPIsParameters = (state, requestData) => {
     }
     // debugger
     return copyState
+}
+
+
+
+const serializerGetResultFile = (state) => {
+    return {
+        insides: state.APIsOrderID.map((APiID) => {
+            let APi = state.APIs[APiID]
+            return {
+                api: APi.api,
+                parameters: APi.parametersOrder.map((parameterID) => {
+                    let parameter = APi.parameters[parameterID]
+                    return {
+                        parameter: parameter.parameter,
+                        type: parameter.type,
+                        value: parameter.value
+                    }
+                })
+            }
+        })
+    }
 }

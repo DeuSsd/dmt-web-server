@@ -15,7 +15,17 @@ const ConfiguratorPreviewAPIs = (props) => {
             />
         )
     })
-    
+
+    // // debugger
+    // return (
+    //     <div>
+    //         <div
+    //             className={style.ConfiguratorPreviewAPIs}>
+    //             {ConfiguratorAPiItems}
+    //             {/* dsd */}
+    //         </div>
+    //     </div>
+    // )
     // debugger
     return (
         <div>
@@ -30,13 +40,6 @@ const ConfiguratorPreviewAPIs = (props) => {
                 className={style.ConfiguratorPreviewAPIs}>
                 {ConfiguratorAPiItems}
             </div>
-            <NavigationPanelContainer
-                pathLinkPrevious={props.pathLinkPrevious}
-                pathLinkNext={props.pathLinkNext}
-                PreviousTab={props.PreviousTab}
-                // SelectedTab={props.SelectedTab}
-                NextTab={props.NextTab}
-            />
         </div>
     )
 }

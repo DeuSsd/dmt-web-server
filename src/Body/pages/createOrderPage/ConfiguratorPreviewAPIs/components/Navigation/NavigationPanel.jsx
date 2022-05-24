@@ -36,7 +36,7 @@ const NavigationPanel = (props) => {
                 <Button
                     pathLink={props.pathLinkNext}
                     actionOnClick={SwitchToNextTab}
-                    text={"Далее"}
+                    text={"Сделать заказ"}
                 />
             </div>
         </div>
