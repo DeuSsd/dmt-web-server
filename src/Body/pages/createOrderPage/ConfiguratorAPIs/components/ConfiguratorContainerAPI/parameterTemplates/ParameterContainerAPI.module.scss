@@ -1,0 +1,63 @@
+@import "./../../../../../src/scss/colors.scss";
+
+.ParameterContainerAPI {
+  display: grid;
+  gap: 10px;
+  grid-template-columns:  1fr 1fr 2fr;
+
+  justify-items: center;
+  width: calc(100% - 2 * $border_width);
+  min-height: 20px;
+
+  padding: 5px;
+
+  position: relative;
+  top: 5px;
+    
+  // border-width: $border_width;
+  // border-color: $c600;
+  // border-style: solid;
+}
+
+
+.title {
+  // width: calc(100% - 2 * $border_width);
+  // height: 30px;
+
+
+
+  // border-width: $border_width;
+  // border-color: $c600;
+  // border-style: solid;
+}
+
+
+// .block {
+//     text-align: center;  /* выравнивание заголовка по центру обертки */
+//     width: 80%;          /* ширина обертки. На самом деле для фиксированной верстки можно использовать и px, но лучше сразу адаптировать под разные устройства, т.к. это, что называется, тренди :-) */
+//     margin: 0 auto;      /* выравнивание обертки по центру документа */
+//     overflow: hidden;    /* прячем линии за границами обертки, чтобы в случае изменения ширины экрана линии не выходили за ее пределы */
+// }
+
+
+
+
+
+.description {
+  width: 100%;
+  // height: 100%;
+
+  // border-width: $border_width;
+  // border-color: $c600;
+  // border-style: solid;
+}
+
+
+.parameterField {
+  width: 100%;
+  // height: 20px;
+
+  // border-width: $border_width;
+  // border-color: $c600;
+  // border-style: solid;
+}

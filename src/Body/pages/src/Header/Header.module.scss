@@ -1,0 +1,59 @@
+@import "../scss/colors.scss";
+
+.header {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: auto 200px;
+
+  align-items: flex-end;
+  width: calc(100% - 2 * $border_width);
+  height: 150px;
+
+  background-color: $c100;
+
+  margin: 0px;
+  padding: 0px;
+  border-radius: 25px;
+  border-width: $border_width;
+  border-color: $c600;
+  border-style: solid;
+}
+
+.textLogo {
+  position: absolute;
+  top: 50px;
+  left: auto;
+  right: 45vw;
+  font-family: $font_family;
+  font-size: $font_size_h1;
+}
+
+.userBox {
+  display: grid;
+  
+  align-items: center;
+  // text-align: center;
+
+  grid-template-rows: 60% auto;
+
+  justify-items: center;
+
+  height: 100%;
+  width: 100%;
+  color: $c900;
+  margin: auto;
+  font-family: $font_family;
+  font-size: $font_size_h1;
+}
+
+
+
+
+.link {
+  justify-self: flex-end;
+  padding-right: 0px;
+  color: gray;
+  font-family: $font_family;
+  font-size: $font_size_h2;
+  text-decoration: inherit;
+}
