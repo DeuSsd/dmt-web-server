@@ -333,16 +333,15 @@ let createOrderReducer = (state = initialState, action) => {
         //     // debugger
         //     return copyState
 
-        // case LOAD_RESULT_FILE:
-            // let selectedAPIsAndParameters = serializerGetResultFile(state)
-            // let resultHTTPRequest 
-            // resultHTTPRequest = APiService.getResultFile(
-            //     { token: action.getToken() },
-            //     selectedAPIsAndParameters
-            // )
+        case LOAD_RESULT_FILE:
+            let selectedAPIsAndParameters = serializerGetResultFile(state)
+            APiService.getResultFile(
+                { token: action.getToken() },
+                selectedAPIsAndParameters
+            )
             // debugger
             // copyState = serializerGetSelectedAPIsParameters(state, resultHTTPRequest)
-            // resultHTTPRequest = {}
+
             // copyState = {
             //     ...state,
             //     APIs: { ...state.APIs }
@@ -359,8 +358,9 @@ let createOrderReducer = (state = initialState, action) => {
             // }
 
 
-            // debugger
-            // return state
+            debugger
+            return state
+
 
         case SELECT_PAGE:
             return {
@@ -375,11 +375,11 @@ let createOrderReducer = (state = initialState, action) => {
             }
 
         case UPDATE_SELECTED_APIS_PARAMETERS:
-                return {
-                    ...state,  //TODO исправить на нормальное: копирование переопределение  ...state
-                    SelectedAPIs: state.APIsColumns.SelectedAPIs.APIsId.map(APiId => state.APIs[APiId].api),
-                }
-    
+            return {
+                ...state,  //TODO исправить на нормальное: копирование переопределение  ...state
+                SelectedAPIsAndParameters: serializerGetResultFile(state),
+            }
+
 
 
         case DRAG_END_SELECTOR_API:
@@ -458,14 +458,14 @@ let createOrderReducer = (state = initialState, action) => {
             let APiID = action.APiID
             let parameterAPI = action.parameterAPI
             let valueParameterAPI = action.valueParameterAPI
-            debugger
+            // debugger
             copyState.APIs[APiID] = { ...state.APIs[APiID] }
             copyState.APIs[APiID].parameters[parameterAPI] = {
                 ...state.APIs[APiID].parameters[parameterAPI],
                 // value: 'valueParameterAPI'
                 value: valueParameterAPI
             }
-            debugger
+            // debugger
             return copyState
         }
         default:
@@ -552,7 +552,7 @@ const serializerGetSelectedAPIsParameters = (state, requestData) => {
     let APIsState = {}
     let parametersState = {}
     let counter = 0
-    debugger
+    // debugger
     requestData['insides'].map((APi) => {
         let id = (++counter) + '';
         APIsOrderID.push(id);
@@ -595,6 +595,8 @@ const serializerGetSelectedAPIsParameters = (state, requestData) => {
 
 const serializerGetResultFile = (state) => {
     return {
+        "task_id": "1123123",
+        "user_id": "2312421",
         insides: state.APIsOrderID.map((APiID) => {
             let APi = state.APIs[APiID]
             return {
@@ -604,13 +606,15 @@ const serializerGetResultFile = (state) => {
                     return {
                         parameter: parameter.parameter,
                         type: parameter.type,
-                        value: parameter.value
+                        value: parameter.value  // TODO Костыль
                     }
                 })
             }
         })
     }
 }
+
+// date.split("-").reverse().join("-"); 
 
 
 
@@ -638,20 +642,20 @@ export const getSelectedAPIsParametersThunkCreator = (SelectedAPIs) => {
     return (dispatch) => {
         // debugger
         // TODO dipatch(fetching...) loading...
-        APiService.getSelectedAPIsParameters(({token:"s" }),SelectedAPIs)
+        APiService.getSelectedAPIsParameters(({ token: "s" }), SelectedAPIs)
             .then(response => dispatch(serializerGetSelectedAPIsParametersCreator(response.data)))
     }
 }
 
-export const getResultFileThunkCreator = (selectedAPIsAndParameters) => {
-    return (dispatch) => {
-        // debugger
-        // TODO dipatch(fetching...) loading...
-        APiService.getResultFileCreator(({token:"s" }), selectedAPIsAndParameters)
-            // .then(response => dispatch(serializerGetSelectedAPIsParametersCreator(response.data)))
-            // TODO fetch loading
-    }
-}
+// export const getResultFileThunkCreator = (selectedAPIsAndParameters) => {
+//     return (dispatch) => {
+//         debugger
+//         // TODO dipatch(fetching...) loading...
+//         APiService.getResultFileCreator(({ token: "s" }), selectedAPIsAndParameters)
+//         // .then(response => dispatch(serializerGetSelectedAPIsParametersCreator(response.data)))
+//         // TODO fetch loading
+//     }
+// }
 
 
 // case LOAD_ALL_APIS:
