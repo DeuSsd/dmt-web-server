@@ -8,7 +8,11 @@ import style from "./GetOrderPageAPIs.module.scss"
 class GetOrderPageAPIs extends React.Component {
     componentDidMount() {
         // debugger
-        this.props.getResultFile()
+        this.props.getResultFileThunkCreator(({
+            "task_id": "1123123",
+            "user_id": "2312421",
+            "insides": this.props.SelectedAPIsAndParameters
+        }))
     }
 
 

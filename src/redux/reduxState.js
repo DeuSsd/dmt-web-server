@@ -1,7 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
+import { applyMiddleware, configureStore } from '@reduxjs/toolkit'
 import authorizationReducer from './authorizationReducer'
 import createOrderReducer from './createOrderReducer';
 
+import thunkMiddleware from 'redux-thunk'
 
 // let store = configureStore(
 //     {
@@ -28,7 +29,8 @@ const rootReducer = (state = {}, action) => {
 }
 
 let store = configureStore({
-    reducer:rootReducer
+    reducer:rootReducer,
+    middleware: [thunkMiddleware],
 }
 )
 

@@ -1,10 +1,11 @@
 import axios from "axios";
+import { serializeAllAPIsCreator } from "../createOrderReducer";
 // import authHeader from "./auth-header";
 const API_URL = "http://localhost:3000";
 
 
-const GET_ALL_APIS_URL = '/'
-const GET_ALL_APIS_PARAMETER_URL = '/apis/getResult'
+const GET_ALL_APIS_URL = '/apis'
+const GET_ALL_APIS_PARAMETER_URL = '/apisWithParameters'
 const GET_RESULT = '/getResult'
 
 
@@ -18,27 +19,27 @@ const FileDownload = require('js-file-download');
 
 const getAllAPIs = (state) => {
   // debugger
-  // return axios.get(API_URL + GET_ALL_APIS_URL, {
-  //   headers: {
-  //     Authorization: 'Bearer ' + state["token"]
-  //   }
-  // });
+  return axios.get(API_URL + GET_ALL_APIS_URL, {
+    headers: {
+      Authorization: 'Bearer ' + state["token"]
+    }
+  });
 
 
-  return ({
-    "apis": [
-      {
-        'title': 'Погода',
-        'api': 'weather_API',
-        'description': "Позволяет собрать данные по погоде в разных городах"
-      },
-      {
-        'title': 'Ковид',
-        "api": "covid_API",
-        'description': "Позволяет собрать данные по ковиду в разных городах"
-      }
-    ]
-  })
+  // return ({
+  //   "apis": [
+  //     {
+  //       'title': 'Погода',
+  //       'api': 'weather_API',
+  //       'description': "Позволяет собрать данные по погоде в разных городах"
+  //     },
+  //     {
+  //       'title': 'Ковид',
+  //       "api": "covid_API",
+  //       'description': "Позволяет собрать данные по ковиду в разных городах"
+  //     }
+  //   ]
+  // })
 
 
 };
@@ -47,76 +48,75 @@ const getAllAPIs = (state) => {
 
 const getSelectedAPIsParameters = (state, selectedAPIs) => {
   // debugger
-  // return axios.post(API_URL + GET_ALL_APIS_PARAMETER_URL, {
-  //   headers: {
-  //     Authorization: 'Bearer ' + state["token"]
-  //   },
-  //   data: selectedAPIs
-  // });
+  return axios.post(API_URL + GET_ALL_APIS_PARAMETER_URL, {
+    ...selectedAPIs,
+    headers: {
+      Authorization: 'Bearer ' + state["token"]
+    }
+  });
 
 
-  return ({
-    "task_id": "1123123",
-    "user_id": "2312421",
-    "insides": [
-      {
-        "api":
-        {
-          "title": "Погода",
-          "api": "weather_API",
-          'description': "Позволяет собрать данные по погоде в разных городах"
-        },
-        "parameters": [{
-          "title_parameter": "Время начала",
-          "parameter": "start_time",
-          "type": "date",
-          'description_parameters': 'Параметр отвечающий за начало выборки'
-        },
-        {
-          "title_parameter": "Время конца",
-          "parameter": "end_time",
-          "type": "date",
-          'description_parameters': 'Параметр отвечающий за конец выборки'
-        }
-        ]
-      },
-      {
-        "api":
-        {
-          "title": "Ковид",
-          "api": "covid_API",
-          'description': "Позволяет собрать данные по погоде в разных городах"
-        },
-        "parameters": [{
-          "title_parameter": "Время начала",
-          "parameter": "start_time",
-          "type": "date",
-          'description_parameters': 'Параметр отвечающий за начало выборки'
-        },
-        {
-          "title_parameter": "Время конца",
-          "parameter": "end_time",
-          "type": "date",
-          'description_parameters': 'Параметр отвечающий за конец выборки'
-        }
-        ]
-      },
+  // return ({
+  //   "task_id": "1123123",
+  //   "user_id": "2312421",
+  //   "insides": [
+  //     {
+  //       "api":
+  //       {
+  //         "title": "Погода",
+  //         "api": "weather_API",
+  //         'description': "Позволяет собрать данные по погоде в разных городах"
+  //       },
+  //       "parameters": [{
+  //         "title_parameter": "Время начала",
+  //         "parameter": "start_time",
+  //         "type": "date",
+  //         'description_parameters': 'Параметр отвечающий за начало выборки'
+  //       },
+  //       {
+  //         "title_parameter": "Время конца",
+  //         "parameter": "end_time",
+  //         "type": "date",
+  //         'description_parameters': 'Параметр отвечающий за конец выборки'
+  //       }
+  //       ]
+  //     },
+  //     {
+  //       "api":
+  //       {
+  //         "title": "Ковид",
+  //         "api": "covid_API",
+  //         'description': "Позволяет собрать данные по погоде в разных городах"
+  //       },
+  //       "parameters": [{
+  //         "title_parameter": "Время начала",
+  //         "parameter": "start_time",
+  //         "type": "date",
+  //         'description_parameters': 'Параметр отвечающий за начало выборки'
+  //       },
+  //       {
+  //         "title_parameter": "Время конца",
+  //         "parameter": "end_time",
+  //         "type": "date",
+  //         'description_parameters': 'Параметр отвечающий за конец выборки'
+  //       }
+  //       ]
+  //     },
 
-    ]
-  })
+  //   ]
+  // })
 };
 
 
 const getResultFile = (state, selectedAPIsAndParameters) => {
-  // debugger
+  debugger
   return axios.post(API_URL + GET_RESULT, {
-    // responseType: 'blob',
+    ...selectedAPIsAndParameters,
     headers: {
       Authorization: 'Bearer ' + state["token"]
-    },
-    body: selectedAPIsAndParameters
+    }
   }).then((response) => {
-    // debugger;
+    debugger;
     FileDownload(response.data, 'report.csv')
   });
 };

@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { onTabPageClickCreator } from "../../../../../../redux/createOrderReducer";
+import { onTabPageClickCreator, updateSelectedApisCreator } from "../../../../../../redux/createOrderReducer";
 import NavigationPanel from "./NavigationPanel";
 
 
@@ -13,6 +13,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onCangeTabCrator: tab => dispatch(onTabPageClickCreator(tab)),
+        updateSelectedApisCreator: () => dispatch(updateSelectedApisCreator())
     }
 }
 

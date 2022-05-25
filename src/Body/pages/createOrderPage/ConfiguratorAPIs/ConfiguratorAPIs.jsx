@@ -6,10 +6,17 @@ import style from "./ConfiguratorAPIs.module.scss"
 // TODO сделать кнопку свернуть/развернуть
 class ConfiguratorAPIs extends React.Component {
 
+
+
     componentDidMount() {
         // debugger
-        this.props.getSelectedAPIsParameters()
+        this.props.getSelectedAPIsParametersThunkCreator(({
+            "task_id": "1123123",
+            "user_id": "2312421",
+            "insides": this.props.SelectedAPIs
+        }))
     }
+
 
     ConfiguratorAPiItemsRender = (props) => (
         props.APIsOrderID.map((APiID) => {

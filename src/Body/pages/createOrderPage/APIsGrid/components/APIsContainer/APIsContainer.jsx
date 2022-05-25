@@ -12,7 +12,6 @@ const APIsContainer = (props) => {
         // debugger
         let key = props.APIs[APiID].id
         let APi = props.APIs[APiID]
-        let s = index
         // debugger
         return (
             <Draggable

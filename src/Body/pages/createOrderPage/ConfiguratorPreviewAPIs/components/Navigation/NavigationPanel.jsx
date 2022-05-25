@@ -12,10 +12,13 @@ const NavigationPanel = (props) => {
     // props.NextTab
 
 
+    
     const SwitchToPreviousTab = () => {
+        //TODO добавить сохранение  выбранных параметров props.updateSelectedAPIsParametersCreator()
         return props.onCangeTabCrator(props.PreviousTab)
     }
     const SwitchToNextTab = () => {
+        props.updateSelectedAPIsParametersCreator()
         props.onCangeTabCrator(props.NextTab)
     }
 

@@ -4,6 +4,12 @@ import style from "./NavigationPanel.module.scss"
 
 // TODO сделать кнопку свернуть/развернуть
 const NavigationPanel = (props) => {
+
+    let next = () => {
+        props.updateSelectedApisCreator()
+        return props.onCangeTabCrator
+    }
+
     // debugger
     return (
         <div className={style.Navigation}>
@@ -15,7 +21,7 @@ const NavigationPanel = (props) => {
             <div className={style.NavigationButtons}>
                 <Button
                     pathLink={props.pathLinkNext}
-                    actionOnClick={props.onCangeTabCrator}
+                    actionOnClick={next}
                     text="Далее"
                 />
             </div>
@@ -24,9 +30,3 @@ const NavigationPanel = (props) => {
 }
 
 export default NavigationPanel;
-
-{/* <Button
-// actionOnClick={props.onSignUpClick}
-actionOnClick={props.onSignUpClick}
-text="Sign Up"
-/> */}

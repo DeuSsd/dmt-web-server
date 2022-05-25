@@ -6,9 +6,14 @@ const SELECT_PAGE = 'SELECT_PAGE'
 const INPUT_API_PARAMETER_DATA_UPDATE = 'INPUT_API_PARAMETER_DATA_UPDATE'
 
 const LOAD_ALL_APIS = 'LOAD_ALL_APIS'
+const LOAD_ALL_APIS_SERIALIZE = 'LOAD_ALL_APIS_SERIALIZE'
+const LOAD_ALL_APIS_PARAMETERS_SERIALIZE = 'LOAD_ALL_APIS_PARAMETERS_SERIALIZE'
 const LOAD_ALL_APIS_PARAMETERS = 'LOAD_ALL_APIS_PARAMETERS'
 const LOAD_RESULT_FILE = 'LOAD_RESULT_FILE'
 
+
+const UPDATE_SELECTED_APIS = 'SELECTED_APIS'
+const UPDATE_SELECTED_APIS_PARAMETERS = 'UPDATE_SELECTED_APIS_PARAMETERS'
 
 const CHOICE_TAB = 'Выбор'
 const CONFIGURATION_TAB = 'Конфигурирование'
@@ -30,6 +35,8 @@ let initialState = {
         'Предпросмотр': '/api-preview',
         'Заказ': '/api-order'
     },
+
+    SelectedAPIsAndParameters: '',
 
     SelectedPage: 'Выбор',
 
@@ -57,6 +64,8 @@ let initialState = {
 
 
     APIsOrderID: ['1', '2', '3', '4'],
+
+    SelectedAPIs: [], //TODO добавить в initialState
 
     APIs: {
         '1': {
@@ -285,52 +294,55 @@ let createOrderReducer = (state = initialState, action) => {
     //     },
     // }
 
-    let resultHTTPRequest
 
     switch (action.type) {
-        case LOAD_ALL_APIS:
-            resultHTTPRequest = APiService.getAllAPIs(({ token: action.getToken() }))
-            // debugger
-            copyState = serializerGetAllAPIs(state, resultHTTPRequest)
-            resultHTTPRequest = {}
-            // debugger
-            return copyState
-        case LOAD_ALL_APIS_PARAMETERS:
-            resultHTTPRequest = APiService.getSelectedAPIsParameters(
-                { token: action.getToken() },
-                { "APIs": ["weather_API", "covid_API"] }
-            )
-            // debugger
-            copyState = serializerGetSelectedAPIsParameters(state, resultHTTPRequest)
-            resultHTTPRequest = {}
-            // copyState = {
-            //     ...state,
-            //     APIs: { ...state.APIs }
-            // }
-            // let APiID = action.APiID
-            // let parameterAPI = action.parameterAPI
-            // let valueParameterAPI = action.valueParameterAPI
-            // debugger
-            // copyState.APIs[APiID] = { ...state.APIs[APiID] }
-            // copyState.APIs[APiID].parameters[parameterAPI] = {
-            //     ...state.APIs[APiID].parameters[parameterAPI],
-            //     // value: 'valueParameterAPI'
-            //     value: valueParameterAPI
-            // }
+        // case LOAD_ALL_APIS:
+        //     getAPIsThunkCreator(({ token: action.getToken() }))
+        //     return state
+
+        case LOAD_ALL_APIS_SERIALIZE:
+            return serializerGetAllAPIs(state, action.responseData)
+
+        case LOAD_ALL_APIS_PARAMETERS_SERIALIZE:
+            return serializerGetSelectedAPIsParameters(state, action.responseData)
+
+        // case LOAD_ALL_APIS_PARAMETERS:
+        //     resultHTTPRequest = APiService.getSelectedAPIsParameters(
+        //         { token: action.getToken() },
+        //         { "APIs": ["weather_API", "covid_API"] }
+        //     )
+        //     // debugger
+        //     copyState = serializerGetSelectedAPIsParameters(state, resultHTTPRequest)
+        //     resultHTTPRequest = {}
+        //     // copyState = {
+        //     //     ...state,
+        //     //     APIs: { ...state.APIs }
+        //     // }
+        //     // let APiID = action.APiID
+        //     // let parameterAPI = action.parameterAPI
+        //     // let valueParameterAPI = action.valueParameterAPI
+        //     // debugger
+        //     // copyState.APIs[APiID] = { ...state.APIs[APiID] }
+        //     // copyState.APIs[APiID].parameters[parameterAPI] = {
+        //     //     ...state.APIs[APiID].parameters[parameterAPI],
+        //     //     // value: 'valueParameterAPI'
+        //     //     value: valueParameterAPI
+        //     // }
 
 
-            // debugger
-            return copyState
+        //     // debugger
+        //     return copyState
 
-        case LOAD_RESULT_FILE:
-            let selectedAPIsAndParameters = serializerGetResultFile(state)
-            resultHTTPRequest = APiService.getResultFile(
-                { token: action.getToken() },
-                selectedAPIsAndParameters
-            )
+        // case LOAD_RESULT_FILE:
+            // let selectedAPIsAndParameters = serializerGetResultFile(state)
+            // let resultHTTPRequest 
+            // resultHTTPRequest = APiService.getResultFile(
+            //     { token: action.getToken() },
+            //     selectedAPIsAndParameters
+            // )
             // debugger
             // copyState = serializerGetSelectedAPIsParameters(state, resultHTTPRequest)
-            resultHTTPRequest = {}
+            // resultHTTPRequest = {}
             // copyState = {
             //     ...state,
             //     APIs: { ...state.APIs }
@@ -348,35 +360,27 @@ let createOrderReducer = (state = initialState, action) => {
 
 
             // debugger
-            return state
+            // return state
 
         case SELECT_PAGE:
-            // // let ss = store.getState()
-            // debugger
-            // let sss = action.getToken()
-            // debugger
-            // debugger
-
-            // switch (action.selectedPage) {
-            //     case CHOICE_TAB:
-            //         // const CHOICE_TAB = 'Выбор'
-            //         // const CONFIGURATION_TAB = 'Конфигурирование'
-            //         // const PREVIEW_TAB = 'Предпросмотр'
-            //         // const OPDER_TAB = 'Заказ'
-
-
-            //         let result = APiService.getAllAPIs(({ token: action.getToken() }))
-            //         debugger
-            //         copyState = serializerGetAllAPIs(state, result)
-            //         debugger
-            //         break
-            //     default:
-            //         copyState = state
-            // }
             return {
                 ...state,  //TODO исправить на нормальное: копирование переопределение  ...state
                 SelectedPage: action.selectedPage,
             }
+
+        case UPDATE_SELECTED_APIS:
+            return {
+                ...state,  //TODO исправить на нормальное: копирование переопределение  ...state
+                SelectedAPIs: state.APIsColumns.SelectedAPIs.APIsId.map(APiId => state.APIs[APiId].api),
+            }
+
+        case UPDATE_SELECTED_APIS_PARAMETERS:
+                return {
+                    ...state,  //TODO исправить на нормальное: копирование переопределение  ...state
+                    SelectedAPIs: state.APIsColumns.SelectedAPIs.APIsId.map(APiId => state.APIs[APiId].api),
+                }
+    
+
 
         case DRAG_END_SELECTOR_API:
             const { destination, source, draggableId } = action.result;
@@ -482,9 +486,13 @@ export const updateAPIParameterInputAreaCreator = (APiID, parameterAPI, valuePar
 
 
 
+export const updateSelectedApisCreator = () => ({ type: UPDATE_SELECTED_APIS })
+export const updateSelectedAPIsParametersCreator = () => ({ type: UPDATE_SELECTED_APIS_PARAMETERS })
 export const onTabPageClickCreator = (selectedPage) => ({ type: SELECT_PAGE, selectedPage: selectedPage })
 
 export const getAllAPIsCreator = () => ({ type: LOAD_ALL_APIS })
+export const serializeAllAPIsCreator = (responseData) => ({ type: LOAD_ALL_APIS_SERIALIZE, responseData: responseData })
+export const serializerGetSelectedAPIsParametersCreator = (responseData) => ({ type: LOAD_ALL_APIS_PARAMETERS_SERIALIZE, responseData: responseData })
 export const getSelectedAPIsParametersCreator = () => ({ type: LOAD_ALL_APIS_PARAMETERS })
 export const getResultFileCreator = () => ({ type: LOAD_RESULT_FILE })
 
@@ -503,6 +511,7 @@ export default createOrderReducer;
 
 
 const serializerGetAllAPIs = (state, requestData) => {
+    // debugger
     let APIsOrderID = []
     let APIs = {}
     let counter = 0
@@ -543,7 +552,7 @@ const serializerGetSelectedAPIsParameters = (state, requestData) => {
     let APIsState = {}
     let parametersState = {}
     let counter = 0
-
+    debugger
     requestData['insides'].map((APi) => {
         let id = (++counter) + '';
         APIsOrderID.push(id);
@@ -584,7 +593,6 @@ const serializerGetSelectedAPIsParameters = (state, requestData) => {
 }
 
 
-
 const serializerGetResultFile = (state) => {
     return {
         insides: state.APIsOrderID.map((APiID) => {
@@ -603,3 +611,62 @@ const serializerGetResultFile = (state) => {
         })
     }
 }
+
+
+
+// export const getAllAPIsCreator = () => ({ type: LOAD_ALL_APIS })
+// export const serializeAllAPIsCreator = (responseData) => ({ type: LOAD_ALL_APIS_SERIALIZE, responseData: responseData })
+// export const getSelectedAPIsParametersCreator = () => ({ type: LOAD_ALL_APIS_PARAMETERS })
+// export const getResultFileCreator = () => ({ type: LOAD_RESULT_FILE })
+
+
+
+//  state = ({ token: state.getToken() })
+export const getAPIsThunkCreator = (data) => {
+    // debugger
+    return (dispatch) => {
+        // debugger
+        // TODO dipatch(fetching...) loading...
+        APiService.getAllAPIs(({ token: '' }))
+            .then(response => dispatch(serializeAllAPIsCreator(response.data)))
+    }
+}
+
+//  state = ({ token: state.getToken() })
+// SelectedAPIs = { "APIs": ["weather_API", "covid_API"] }
+export const getSelectedAPIsParametersThunkCreator = (SelectedAPIs) => {
+    return (dispatch) => {
+        // debugger
+        // TODO dipatch(fetching...) loading...
+        APiService.getSelectedAPIsParameters(({token:"s" }),SelectedAPIs)
+            .then(response => dispatch(serializerGetSelectedAPIsParametersCreator(response.data)))
+    }
+}
+
+export const getResultFileThunkCreator = (selectedAPIsAndParameters) => {
+    return (dispatch) => {
+        // debugger
+        // TODO dipatch(fetching...) loading...
+        APiService.getResultFileCreator(({token:"s" }), selectedAPIsAndParameters)
+            // .then(response => dispatch(serializerGetSelectedAPIsParametersCreator(response.data)))
+            // TODO fetch loading
+    }
+}
+
+
+// case LOAD_ALL_APIS:
+// // let data = {}
+
+// // debugger
+// // resultHTTPRequest.then( data => {
+// //     debugger
+// //     copyState = serializerGetAllAPIs(state, data)
+// //     return state
+// // })
+// // debugger
+// // resultHTTPRequest = {}
+// // debugger
+// return state
+
+// case LOAD_ALL_APIS_SERIALIZE:
+// return serializerGetAllAPIs(state, action.responseData)

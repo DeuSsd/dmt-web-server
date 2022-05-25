@@ -11,7 +11,7 @@ class APIsGrid extends React.Component {
     // }
 
     componentDidMount() {
-        this.props.getAllAPIs()
+        this.props.getAPIsThunkCreator("data")
     }
 
     APIsColumnsItemsRender = (props) => (
