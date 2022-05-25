@@ -110,12 +110,14 @@ const getSelectedAPIsParameters = (state, selectedAPIs) => {
 
 const getResultFile = (state, selectedAPIsAndParameters) => {
   debugger
-  return axios.post(API_URL + GET_RESULT, {
-    ...selectedAPIsAndParameters,
-    headers: {
-      Authorization: 'Bearer ' + state["token"]
-    }
-  }).then((response) => {
+  return axios.post(API_URL + GET_RESULT, selectedAPIsAndParameters
+    //  {
+    // ...selectedAPIsAndParameters,
+    // headers: {
+    //   Authorization: 'Bearer ' + state["token"]
+    // }
+  // }
+  ).then((response) => {
     debugger;
     FileDownload(response.data, 'report.csv')
   });

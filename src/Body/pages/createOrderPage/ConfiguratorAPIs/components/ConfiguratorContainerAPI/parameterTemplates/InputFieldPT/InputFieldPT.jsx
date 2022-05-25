@@ -8,7 +8,7 @@ const InputFieldPT = (props) => {
         let APiID = props.APiID
         let parameterAPI = props.parameterAPI;
         let valueParameterAPI = e.target.value;
-        debugger
+        // debugger
         props.updateAPIParameterInputAreaCreator(APiID, parameterAPI, valueParameterAPI);
     }
 

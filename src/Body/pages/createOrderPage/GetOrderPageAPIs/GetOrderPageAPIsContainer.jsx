@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { getResultFileCreator, getResultFileThunkCreator } from "../../../../redux/createOrderReducer";
+import { getAPIsThunkCreator, getResultFileCreator, getResultFileThunkCreator } from "../../../../redux/createOrderReducer";
 // import { onDragEndCreator } from "../../../../redux/createOrderReducer";
 import GetOrderPageAPIs from "./GetOrderPageAPIs";
 
@@ -14,10 +14,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-       
-        getResultFile: () => { dispatch(getResultFileCreator()) },
-        getResultFileThunkCreator: SelectedAPIsAndParameters => dispatch(getResultFileThunkCreator(SelectedAPIsAndParameters)),
-
+        getResultFileCreator: () => { dispatch(getResultFileCreator()) },
+        // getResultFileThunkCreator: (SelectedAPIsAndParameters) => dispatch(getResultFileThunkCreator(SelectedAPIsAndParameters)),
+        // getAPIsThunkCreator: (data) => dispatch(getAPIsThunkCreator(data)),
     }
 }
 
