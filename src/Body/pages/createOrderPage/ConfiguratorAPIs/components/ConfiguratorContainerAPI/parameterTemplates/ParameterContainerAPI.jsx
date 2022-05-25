@@ -35,6 +35,15 @@ const ParameterContainerAPI = (props) => {
                     // input_type={'type'}  //TODO text was change to string
                     input_type={'text'} 
                     />)
+            case 'float': //TODO text was change to float
+                return (<InputFieldPTContainer 
+                    parameterAPI={parameter}
+                    APiID = {props.APiID}
+                    key={parameter+props.APiID}
+                    value={value}
+                    // input_type={'type'}  //TODO text was change to float
+                    input_type={'text'} 
+                    />)
             case 'selectOne':
                 return (<SelectorFieldPTContainer 
                     parameterAPI={parameter}

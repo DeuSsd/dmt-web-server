@@ -30,6 +30,16 @@ const ParameterPreviewContainerAPI = (props) => {
                     value={value}
                     input_type={type} 
                     />)
+            case 'string':
+                return (<TextPreviewPT 
+                    value={value}
+                    input_type={'text'} 
+                    />)
+            case 'float':
+                return (<TextPreviewPT 
+                    value={value}
+                    input_type={'text'} 
+                    />)
             case 'selectOne':
                 return (<TextPreviewPT 
                     value={value}
