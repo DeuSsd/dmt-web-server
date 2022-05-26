@@ -12,6 +12,10 @@ const LOAD_ALL_APIS_PARAMETERS = 'LOAD_ALL_APIS_PARAMETERS'
 const LOAD_RESULT_FILE = 'LOAD_RESULT_FILE'
 
 
+
+const LOAD_TOKEN = 'LOAD_TOKEN'
+
+
 const UPDATE_SELECTED_APIS = 'SELECTED_APIS'
 const UPDATE_SELECTED_APIS_PARAMETERS = 'UPDATE_SELECTED_APIS_PARAMETERS'
 
@@ -62,6 +66,7 @@ let initialState = {
     //     },
     // },
 
+    token: '',
 
     APIsOrderID: ['1', '2', '3', '4'],
 
@@ -259,7 +264,7 @@ let initialState = {
             APIsId: [],
         }
     },
-
+    stateAuth: false,
     APIsColumnsOrder: ['UnselectedAPIs', 'SelectedAPIs']
 }
 
@@ -299,6 +304,14 @@ let createOrderReducer = (state = initialState, action) => {
         // case LOAD_ALL_APIS:
         //     getAPIsThunkCreator(({ token: action.getToken() }))
         //     return state
+
+        case LOAD_TOKEN:
+            debugger
+            return {
+                ...state,
+                stateAuth: action.getStateAuth(),
+                token: action.getToken()
+            }
 
         case LOAD_ALL_APIS_SERIALIZE:
             return serializerGetAllAPIs(state, action.responseData)
@@ -486,6 +499,7 @@ export const updateAPIParameterInputAreaCreator = (APiID, parameterAPI, valuePar
 
 
 
+export const getTokenCreator = () => ({ type: LOAD_TOKEN })
 export const updateSelectedApisCreator = () => ({ type: UPDATE_SELECTED_APIS })
 export const updateSelectedAPIsParametersCreator = () => ({ type: UPDATE_SELECTED_APIS_PARAMETERS })
 export const onTabPageClickCreator = (selectedPage) => ({ type: SELECT_PAGE, selectedPage: selectedPage })
@@ -614,7 +628,7 @@ const serializerGetResultFile = (state) => {
     }
 }
 
-// date.split("-").reverse().join("-"); 
+// date.split("-").reverse().join("-");
 
 
 
@@ -626,12 +640,12 @@ const serializerGetResultFile = (state) => {
 
 
 //  state = ({ token: state.getToken() })
-export const getAPIsThunkCreator = (data) => {
-    // debugger
+export const getAPIsThunkCreator = (state) => {
+    debugger
     return (dispatch) => {
         // debugger
         // TODO dipatch(fetching...) loading...
-        APiService.getAllAPIs(({ token: '' }))
+        APiService.getAllAPIs(state)
             .then(response => dispatch(serializeAllAPIsCreator(response.data)))
     }
 }
@@ -646,31 +660,3 @@ export const getSelectedAPIsParametersThunkCreator = (SelectedAPIs) => {
             .then(response => dispatch(serializerGetSelectedAPIsParametersCreator(response.data)))
     }
 }
-
-// export const getResultFileThunkCreator = (selectedAPIsAndParameters) => {
-//     return (dispatch) => {
-//         debugger
-//         // TODO dipatch(fetching...) loading...
-//         APiService.getResultFileCreator(({ token: "s" }), selectedAPIsAndParameters)
-//         // .then(response => dispatch(serializerGetSelectedAPIsParametersCreator(response.data)))
-//         // TODO fetch loading
-//     }
-// }
-
-
-// case LOAD_ALL_APIS:
-// // let data = {}
-
-// // debugger
-// // resultHTTPRequest.then( data => {
-// //     debugger
-// //     copyState = serializerGetAllAPIs(state, data)
-// //     return state
-// // })
-// // debugger
-// // resultHTTPRequest = {}
-// // debugger
-// return state
-
-// case LOAD_ALL_APIS_SERIALIZE:
-// return serializerGetAllAPIs(state, action.responseData)

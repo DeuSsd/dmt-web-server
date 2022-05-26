@@ -12,13 +12,7 @@ import CreateOrderPageContainer from './createOrderPage/CreateOrderPageContainer
 import AuthorizationPageContainer from './AuthorizationPage/AuthorizationPageContainer';
 
 
-
-//  // {/* <Header /> */}
-//     {/* {console.log(AuthService.login("user","@Qwerty1234"))} */}
-
-
 function App(props) {
-  // '/apiselector'
   return (
     <BrowserRouter>
       <div className={style.app}>
@@ -32,3 +26,5 @@ function App(props) {
 }
 
 export default App;
+
+

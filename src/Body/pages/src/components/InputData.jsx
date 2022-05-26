@@ -17,7 +17,12 @@ const InputData = (props) => {
                 {props.text}
             </div>
             <div>
-                <input onChange={onTextAreaValueChange} value={props.value} type={props.input_type} placeholder={props.placeholder} />
+                <input
+                    onChange={onTextAreaValueChange}
+                    value={props.value}
+                    type={props.input_type}
+                    placeholder={props.placeholder}
+                />
             </div>
         </div>
     )
@@ -25,3 +30,4 @@ const InputData = (props) => {
 
 
 export default InputData;
+

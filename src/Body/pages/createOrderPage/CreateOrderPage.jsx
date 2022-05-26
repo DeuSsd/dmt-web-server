@@ -15,7 +15,10 @@ const OPDER_TAB = 'Заказ'
 
 const CreateOrderPage = (props) => {
     // let ss = props.pathnameLocation+props.tabLinks['Выбор']
-    // debugger
+    debugger
+
+   props.getTokenCreator()
+   debugger
     return (
         <div className={style.createOrderPage}>
             <Routes>
@@ -23,6 +26,7 @@ const CreateOrderPage = (props) => {
                     <Route
                         path={props.tabLinks[CHOICE_TAB]}
                         element={
+                            props.statusAuth ? 
                             <APIsGridContainer
                                 // SelectedTab={CHOICE_TAB}
                                 // pathLinkPrevious={props.pathnameLocation + props.tabLinks[CONFIGURATION_TAB]}
@@ -30,8 +34,9 @@ const CreateOrderPage = (props) => {
                                 pathLinkNext={props.pathnameLocation + props.tabLinks[CONFIGURATION_TAB]}
                                 NextTab={CONFIGURATION_TAB}
 
-                            />
+                            /> : <div> false </div>
                         }
+                        
                     />
                     <Route
                         path={props.tabLinks[CONFIGURATION_TAB]}

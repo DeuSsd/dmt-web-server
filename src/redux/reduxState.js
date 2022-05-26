@@ -1,4 +1,4 @@
-import { applyMiddleware, configureStore } from '@reduxjs/toolkit'
+import { configureStore } from '@reduxjs/toolkit'
 import authorizationReducer from './authorizationReducer'
 import createOrderReducer from './createOrderReducer';
 
@@ -16,6 +16,7 @@ import thunkMiddleware from 'redux-thunk'
 const rootReducer = (state = {}, action) => {
 
     const getToken = () => state.authorization.token;
+    const getStateAuth = () => state.authorization.stateAuth;
 
     return {
     //   languages: languages(state.languages, action),
@@ -23,10 +24,12 @@ const rootReducer = (state = {}, action) => {
     //   translations: translations(state.translations, {...action, languageCodes})
    
       authorization: authorizationReducer(state.authorization, action),
-      createOrderPage: createOrderReducer(state.createOrderPage, {...action, getToken}),
+      createOrderPage: createOrderReducer(state.createOrderPage, {...action, getToken,getStateAuth }),
    
     };
 }
+
+
 
 let store = configureStore({
     reducer:rootReducer,

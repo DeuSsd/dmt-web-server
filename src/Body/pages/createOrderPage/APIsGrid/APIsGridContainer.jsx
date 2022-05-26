@@ -1,5 +1,5 @@
 import { connect } from "react-redux";
-import { getAllAPIsCreator, getAPIsThunkCreator, onDragEndCreator } from "../../../../redux/createOrderReducer";
+import { getAllAPIsCreator, getAPIsThunkCreator, getTokenCreator, onDragEndCreator } from "../../../../redux/createOrderReducer";
 import APIsGrid from "./APIsGrid";
 
 
@@ -8,11 +8,13 @@ const mapStateToProps = (state) => {
         APIs: state.createOrderPage.APIs,
         APIsColumns: state.createOrderPage.APIsColumns,
         APIsColumnsOrder: state.createOrderPage.APIsColumnsOrder,
+        getToken: () =>  ({token: state.createOrderPage.token}), //function
     }
 }
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        getTokenCreator: () => dispatch(getTokenCreator()),
         onDragEnd: (result) => { dispatch(onDragEndCreator(result)) },
         getAllAPIs: () => { dispatch(getAllAPIsCreator()) },
         getAPIsThunkCreator: (data) => { dispatch(getAPIsThunkCreator(data)) }

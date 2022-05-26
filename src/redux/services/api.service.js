@@ -1,32 +1,21 @@
 import axios from "axios";
-import { serializeAllAPIsCreator } from "../createOrderReducer";
 // import authHeader from "./auth-header";
+
 const API_URL = "http://localhost:3000";
-
-
 const GET_ALL_APIS_URL = '/apis'
 const GET_ALL_APIS_PARAMETER_URL = '/apisWithParameters'
 const GET_RESULT = '/getResult'
 
-
-
-const FileDownload = require('js-file-download');
-
-// const getAllAPIs = () => {
-//   return axios.get(API_URL + "user", { headers: authHeader() });
-// };
-
-
 const getAllAPIs = (state) => {
-  // debugger
+  debugger
   return axios.get(API_URL + GET_ALL_APIS_URL, {
     headers: {
       Authorization: 'Bearer ' + state["token"]
     }
   });
+};
 
-
-  // return ({
+// return ({
   //   "apis": [
   //     {
   //       'title': 'Погода',
@@ -40,10 +29,16 @@ const getAllAPIs = (state) => {
   //     }
   //   ]
   // })
+  
+
+// };
 
 
-};
+// const FileDownload = require('js-file-download');
 
+// const getAllAPIs = () => {
+//   return axios.get(API_URL + "user", { headers: authHeader() });
+// };
 
 
 const getSelectedAPIsParameters = (state, selectedAPIs) => {
@@ -54,6 +49,7 @@ const getSelectedAPIsParameters = (state, selectedAPIs) => {
       Authorization: 'Bearer ' + state["token"]
     }
   });
+};
 
 
   // return ({
@@ -105,20 +101,19 @@ const getSelectedAPIsParameters = (state, selectedAPIs) => {
 
   //   ]
   // })
-};
+// };
 
 
+const FileDownload = require('js-file-download');
 const getResultFile = (state, selectedAPIsAndParameters) => {
-  debugger
-  return axios.post(API_URL + GET_RESULT, selectedAPIsAndParameters
-    //  {
-    // ...selectedAPIsAndParameters,
-    // headers: {
-    //   Authorization: 'Bearer ' + state["token"]
-    // }
-  // }
+  // debugger
+  return axios.post(API_URL + GET_RESULT, {...selectedAPIsAndParameters, 
+    
+    headers: {
+      Authorization: 'Bearer ' + state["token"]
+    }}
   ).then((response) => {
-    debugger;
+    // debugger;
     FileDownload(response.data, 'report.csv')
   });
 };
